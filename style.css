@@ -626,7 +626,7 @@ body {
     color: var(--text-secondary);
 }
 
-/* ========== ARENA SECTION ========== */
+/* ========== BRANCH SELECTION SECTION ========== */
 .arena {
     min-height: 100vh;
     padding: 6rem 2rem;
@@ -689,7 +689,7 @@ body {
     line-height: 1.8;
 }
 
-.year-selection {
+.branch-selection {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -697,7 +697,7 @@ body {
     gap: 2rem;
 }
 
-.year-card {
+.branch-card {
     background: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -709,7 +709,7 @@ body {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.year-card::before {
+.branch-card::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -722,7 +722,7 @@ body {
     opacity: 0;
 }
 
-.year-card:hover::before {
+.branch-card:hover::before {
     opacity: 0.1;
     animation: shimmer 1.5s infinite;
 }
@@ -736,14 +736,14 @@ body {
     }
 }
 
-.year-card:hover {
+.branch-card:hover {
     transform: translateY(-10px);
     border-color: var(--primary-green);
     box-shadow: 0 20px 60px var(--glow-green);
 }
 
-.year-number {
-    font-size: 5rem;
+.branch-code {
+    font-size: 3rem;
     font-weight: 900;
     background: linear-gradient(135deg, var(--primary-green), var(--primary-cyan));
     -webkit-background-clip: text;
@@ -753,15 +753,15 @@ body {
     margin-bottom: 1rem;
 }
 
-.year-label {
-    font-size: 1.3rem;
+.branch-label {
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-secondary);
     display: block;
     transition: color 0.3s ease;
 }
 
-.year-card:hover .year-label {
+.branch-card:hover .branch-label {
     color: var(--text-primary);
 }
 
@@ -776,8 +776,101 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.year-card:hover .card-glow {
+.branch-card:hover .card-glow {
     opacity: 1;
+}
+
+/* ========== SEMESTER SELECTION SECTION ========== */
+.semester-section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+.semester-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+}
+
+.semester-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.semester-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.semester-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.semester-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.semester-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, transparent, var(--glow-cyan), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.semester-card:hover::before {
+    opacity: 0.1;
+    animation: shimmer 1.5s infinite;
+}
+
+.semester-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-cyan);
+    box-shadow: 0 20px 60px var(--glow-cyan);
+}
+
+.semester-number {
+    font-size: 5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.semester-label {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.semester-card:hover .semester-label {
+    color: var(--text-primary);
 }
 
 /* ========== SUBJECTS SECTION ========== */
@@ -787,36 +880,27 @@ body {
     position: relative;
 }
 
-.semester-selector {
+.subjects-header {
     text-align: center;
     margin-bottom: 4rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
 }
 
-.semester-btn {
-    background: var(--card-bg);
+.subjects-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.selected-info {
+    font-size: 1.2rem;
     color: var(--text-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    font-size: 1.1rem;
+}
+
+#selected-branch,
+#selected-semester {
+    color: var(--primary-green);
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.semester-btn:hover {
-    border-color: var(--primary-green);
-    color: var(--text-primary);
-}
-
-.semester-btn.active {
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-cyan));
-    color: var(--dark-bg);
-    border-color: transparent;
-    box-shadow: 0 0 30px var(--glow-green);
 }
 
 .subjects-grid {
@@ -1023,7 +1107,9 @@ body {
         font-size: 4rem;
     }
     
-    .arena-title {
+    .arena-title,
+    .semester-title,
+    .subjects-title {
         font-size: 3rem;
     }
 }
@@ -1055,7 +1141,8 @@ body {
         width: 100%;
     }
     
-    .year-selection {
+    .branch-selection,
+    .semester-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1078,11 +1165,21 @@ body {
         font-size: 2.5rem;
     }
     
-    .arena-title {
+    .arena-title,
+    .semester-title,
+    .subjects-title {
         font-size: 2.5rem;
     }
     
     .teaser-title {
         font-size: 2.5rem;
+    }
+    
+    .branch-code {
+        font-size: 2.5rem;
+    }
+    
+    .semester-number {
+        font-size: 4rem;
     }
 }

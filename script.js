@@ -1,3 +1,7 @@
+// ========== STATE MANAGEMENT ==========
+let selectedBranch = null;
+let selectedSemester = null;
+
 // ========== NAVIGATION SCROLL EFFECT ==========
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -57,22 +61,70 @@ hamburger?.addEventListener('click', () => {
 const branchCards = document.querySelectorAll('.branch-card');
 
 branchCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const branch = card.getAttribute('data-branch');
-        // Add ripple effect
-        createRipple(card);
+    card.addEventListener('click', function(e) {
+        const branch = this.getAttribute('data-branch');
+        selectedBranch = branch;
         
-        // Scroll to subjects section
+        // Add ripple effect
+        createRipple(this, e);
+        
+        // Update selected branch display
+        updateSelectedInfo();
+        
+        // Scroll to semester section
         setTimeout(() => {
-            document.querySelector('#assignments')?.scrollIntoView({
+            document.querySelector('#semesters')?.scrollIntoView({
                 behavior: 'smooth'
             });
         }, 300);
         
-        // Optional: Store selected branch
+        // Store selected branch
         sessionStorage.setItem('selectedBranch', branch);
     });
 });
+
+// ========== SEMESTER CARD INTERACTIONS ==========
+const semesterCards = document.querySelectorAll('.semester-card');
+
+semesterCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+        const semester = this.getAttribute('data-semester');
+        selectedSemester = semester;
+        
+        // Add ripple effect
+        createRipple(this, e);
+        
+        // Update selected semester display
+        updateSelectedInfo();
+        
+        // Scroll to subjects section
+        setTimeout(() => {
+            document.querySelector('#subjects')?.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }, 300);
+        
+        // Store selected semester
+        sessionStorage.setItem('selectedSemester', semester);
+        
+        // Here you can add logic to filter subjects based on branch and semester
+        console.log(`Selected: ${selectedBranch} - Semester ${semester}`);
+    });
+});
+
+// ========== UPDATE SELECTED INFO ==========
+function updateSelectedInfo() {
+    const branchDisplay = document.getElementById('selected-branch');
+    const semesterDisplay = document.getElementById('selected-semester');
+    
+    if (branchDisplay && selectedBranch) {
+        branchDisplay.textContent = selectedBranch;
+    }
+    
+    if (semesterDisplay && selectedSemester) {
+        semesterDisplay.textContent = `Semester ${selectedSemester}`;
+    }
+}
 
 // ========== RIPPLE EFFECT ==========
 function createRipple(element, event) {
@@ -116,20 +168,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ========== BATCH SELECTOR ==========
-const batchButtons = document.querySelectorAll('.batch-btn');
-
-batchButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        batchButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const batch = btn.getAttribute('data-batch');
-        // Here you can add logic to filter subjects based on batch
-        console.log(`Selected batch: ${batch}`);
-    });
-});
-
 // ========== SUBJECT CARD ANIMATIONS ==========
 const subjectCards = document.querySelectorAll('.subject-card');
 
@@ -143,7 +181,7 @@ subjectCards.forEach(card => {
     });
     
     card.addEventListener('click', () => {
-        const subjectCode = card.querySelector('.subject-code').textContent;
+        const subjectCode = card.querySelector('.subject-code')?.textContent;
         // Add click effect
         card.style.transform = 'translateY(-10px) scale(0.98)';
         setTimeout(() => {
@@ -159,7 +197,7 @@ subjectCards.forEach(card => {
 const orb = document.querySelector('.orb');
 const orbContainer = document.querySelector('.orb-container');
 
-if (orbContainer) {
+if (orbContainer && orb) {
     window.addEventListener('mousemove', (e) => {
         const { clientX, clientY } = e;
         const { innerWidth, innerHeight } = window;
@@ -187,7 +225,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all major sections and cards
-document.querySelectorAll('.branch-card, .subject-card, .teaser-content, .arena-header').forEach(el => {
+document.querySelectorAll('.branch-card, .semester-card, .subject-card, .teaser-content, .arena-header, .semester-header, .subjects-header').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
 });
@@ -195,6 +233,8 @@ document.querySelectorAll('.branch-card, .subject-card, .teaser-content, .arena-
 // ========== DYNAMIC PARTICLE GENERATION ==========
 function createParticles() {
     const particleContainer = document.querySelector('.bg-animation');
+    if (!particleContainer) return;
+    
     const particleCount = 10;
     
     for (let i = 5; i < particleCount + 5; i++) {
@@ -382,7 +422,7 @@ document.addEventListener('mousemove', () => {
 });
 
 // ========== CONSOLE MESSAGE ==========
-console.log('%c🚀 IET Study Hub', 'font-size: 24px; font-weight: bold; color: #00ff88;');
+console.log('%c🚀 Quantum Nexus', 'font-size: 24px; font-weight: bold; color: #00ff88;');
 console.log('%cBuilt with ❤️ for students', 'font-size: 14px; color: #00d4ff;');
 console.log('%cTip: Try the Konami Code! ⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️BA', 'font-size: 12px; color: #888;');
 
@@ -411,7 +451,21 @@ document.querySelectorAll('button').forEach(btn => {
 
 // ========== INITIALIZE ALL FEATURES ==========
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎉 IET Study Hub initialized successfully!');
+    console.log('🎉 Quantum Nexus initialized successfully!');
+    
+    // Restore previous selections from session storage
+    const savedBranch = sessionStorage.getItem('selectedBranch');
+    const savedSemester = sessionStorage.getItem('selectedSemester');
+    
+    if (savedBranch) {
+        selectedBranch = savedBranch;
+    }
+    
+    if (savedSemester) {
+        selectedSemester = savedSemester;
+    }
+    
+    updateSelectedInfo();
     
     // Add any initialization code here
     initializeTooltips();
