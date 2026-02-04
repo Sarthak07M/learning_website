@@ -3,12 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quantum Nexus - Your Ultimate Academic Resource</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <t>
-        <h1>Hello, World!</h1>
-        </t
-    
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">Quantum Nexus</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#branches" class="nav-link">Branches</a></li>
+                <li><a href="#assignments" class="nav-link">Assignments</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-signin">Sign in</button>
+                <button class="btn-contribute">Contribute ></button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span>Introducing IET Study Hub</span>
+                </div>
+                <h1 class="hero-title">
+                    Collection of
+                    <br>
+                    <span class="gradient-text">your resources</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The all in one place for all your study problems.
+                    <br>
+                    Study whenever you feel like it.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary">Contribute ></button>
+                    <button class="btn-secondary">Explore ></button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="orb-container">
+                    <div class="orb"></div>
+                    <div class="orb-ring"></div>
+                    <div class="orb-ring ring-2"></div>
+                <div class="floating-text">QUANTUM NEXUS</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaser Section -->
+    <section class="teaser">
+        <div class="teaser-content">
+            <div class="mystery-icon">
+                <div class="icon-glow"></div>
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" />
+                </svg>
+            </div>
+            <h2 class="teaser-title">Missing something</h2>
+            <p class="teaser-subtitle">it will be here before exams.</p>
+        </div>
+    </section>
+
+    <!-- Arena Selection -->
+    <section id="years" class="arena">
+        <div class="arena-header">
+            <div class="arena-icon">
+                <div class="sphere">
+                    <div class="sphere-inner"></div>
+                </div>
+            </div>
+            <h2 class="arena-title">
+                Choose your <span class="gradient-text">Arena</span>
+            </h2>
+            <p class="arena-subtitle">
+                All the resources you need to manage your academics like pyqs, notes, assignments, projects, videos and much more
+            </p>
+        </div>
+
+        <div class="branch-selection">
+            <div class="branch-card" data-branch="CSE">
+                <span class="branch-code">CSE</span>
+                <span class="branch-label">Computer Science</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="ECE">
+                <span class="branch-code">ECE</span>
+                <span class="branch-label">Electronics & Communication</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="ME">
+                <span class="branch-code">ME</span>
+                <span class="branch-label">Mechanical Engineering</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="CE">
+                <span class="branch-code">CE</span>
+                <span class="branch-label">Civil Engineering</span>
+                <div class="card-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section id="assignments" class="subjects">
+        <div class="batch-selector">
+            <button class="batch-btn" data-batch="1">Batch-I</button>
+            <button class="batch-btn active" data-batch="2">Batch-II</button>
+        </div>
+
+        <div class="subjects-grid">
+            <div class="subject-card">
+                <div class="card-bg"></div>
+                <div class="card-code">2APRC2</div>
+                <h3 class="card-title">APPLIED<br>PHYSICS</h3>
+                <div class="card-info">
+                    <p class="subject-code">2APRC2</p>
+                    <p class="subject-name">Applied Physics</p>
+                    <div class="contributors">
+                        <span class="contributor">Rachna Gupta</span>
+                        <span class="contributor">Shailendra Khinchi</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject-card">
+                <div class="card-bg"></div>
+                <div class="card-code">2SSRS2</div>
+                <h3 class="card-title">HUMANITIES</h3>
+                <div class="card-info">
+                    <p class="subject-code">2SSRS2</p>
+                    <p class="subject-name">Humanities</p>
+                    <div class="contributors">
+                        <span class="contributor">Aarti Saran</span>
+                        <span class="contributor">Asmita Agrawal</span>
+                        <span class="contributor">Deepali Bajaj</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject-card">
+                <div class="card-bg"></div>
+                <div class="card-code">2MERC3</div>
+                <h3 class="card-title">ENGINEERING<br>DRAWING</h3>
+                <div class="card-info">
+                    <p class="subject-code">2MERC3</p>
+                    <p class="subject-name">Engineering Drawing</p>
+                    <div class="contributors">
+                        <span class="contributor">Omprakash</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject-card">
+                <div class="card-bg"></div>
+                <div class="card-code">2EIRC4</div>
+                <h3 class="card-title">ELECTRICAL<br>ENGINEERING</h3>
+                <div class="card-info">
+                    <p class="subject-code">2EIRC4</p>
+                    <p class="subject-name">Electrical Engineering</p>
+                    <div class="contributors">
+                        <span class="contributor">Ajay Verma</span>
+                        <span class="contributor">Surekha patil</span>
+                        <span class="contributor">Nitin</span>
+                        <span class="contributor">Tapesh Sarsodiya</span>
+                        <span class="contributor">Bhallavi</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject-card">
+                <div class="card-bg"></div>
+                <div class="card-code">2CORC5</div>
+                <h3 class="card-title">COMPUTER<br>PROGRAMMING</h3>
+                <div class="card-info">
+                    <p class="subject-code">2CORC5</p>
+                    <p class="subject-name">Computer Programming</p>
+                    <div class="contributors">
+                        <span class="contributor">Manoj Pawaiya</span>
+                        <span class="contributor">Navneet Chaudhary</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject-card">
+                <div class="card-bg"></div>
+                <div class="card-code">2AMRC1</div>
+                <h3 class="card-title">APPLIED<br>MATH-II</h3>
+                <div class="card-info">
+                    <p class="subject-code">2AMRC1</p>
+                    <p class="subject-name">Applied Mathematics-II</p>
+                    <div class="contributors">
+                        <span class="contributor">Chandrashekhar</span>
+                        <span class="contributor">Vikas</span>
+                        <span class="contributor">Deepika Rai</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Quantum Nexus</span>
+            </div>
+            <div class="footer-links">
+                <a href="#team">Team</a>
+                <a href="#years">Years</a>
+                <a href="#assignments">Assignments</a>
+                <a href="#contribute">Contribute</a>
+            </div>
+            <div class="footer-social">
+                <p>&copy; 2026 Quantum Nexus. All resources for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
