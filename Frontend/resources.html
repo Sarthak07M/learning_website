@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Nexus - Resources</title>
+    <link rel="stylesheet" href="resources.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">Quantum Nexus</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="branch.html" class="nav-link">Branches</a></li>
+                <li><a href="faculty.html" class="nav-link active">Subjects</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-signin">Sign in</button>
+                <button class="btn-contribute">Contribute →</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Resources Section -->
+    <section class="resources">
+        <div class="resources-header">
+            <h2 class="resources-title">
+                <span class="gradient-text">Resources</span> for <span id="subject-name">Subject</span>
+            </h2>
+            <p class="selected-info">
+                <span id="selected-branch">Branch</span> • 
+                <span id="selected-semester">Semester</span> • 
+                <span id="selected-subject-code">Code</span>
+            </p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                    </svg>
+                </div>
+                <h3 class="resource-title">Notes</h3>
+                <p class="resource-description">Comprehensive study notes and lecture materials</p>
+                <button class="resource-btn">View Notes →</button>
+            </div>
+
+            <div class="resource-card pyq-card">
+                <div class="resource-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z" />
+                    </svg>
+                </div>
+                <h3 class="resource-title">Previous Year Questions</h3>
+                <p class="resource-description">PYQs and sample papers for practice</p>
+                <div class="pyq-sections">
+                    <button class="resource-btn pyq-btn" data-type="mst">MST</button>
+                    <button class="resource-btn pyq-btn" data-type="end-sem">End Sem</button>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" />
+                    </svg>
+                </div>
+                <h3 class="resource-title">Video Lectures</h3>
+                <p class="resource-description">Recorded lectures and tutorials</p>
+                <button class="resource-btn">Watch Videos →</button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z" />
+                    </svg>
+                </div>
+                <h3 class="resource-title">Assignments</h3>
+                <p class="resource-description">Practice assignments and solutions</p>
+                <button class="resource-btn">View Assignments →</button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z" />
+                    </svg>
+                </div>
+                <h3 class="resource-title">Projects</h3>
+                <p class="resource-description">Project ideas and implementations</p>
+                <button class="resource-btn">View Projects →</button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z" />
+                    </svg>
+                </div>
+                <h3 class="resource-title">Additional Resources</h3>
+                <p class="resource-description">Books, references, and other materials</p>
+                <button class="resource-btn">View Resources →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Quantum Nexus</span>
+            </div>
+            <div class="footer-links">
+                <a href="#team">Team</a>
+                <a href="branch.html">Branches</a>
+                <a href="faculty.html">Subjects</a>
+                <a href="#contribute">Contribute</a>
+            </div>
+            <div class="footer-social">
+                <p>&copy; 2026 Quantum Nexus. All resources for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="resources.js"></script>
+</body>
+</html>

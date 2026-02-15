@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Nexus - Admin Upload</title>
+    <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">Quantum Nexus</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="branch.html" class="nav-link">Branches</a></li>
+                <li><a href="faculty.html" class="nav-link">Subjects</a></li>
+                <li><a href="upload.html" class="nav-link active">Upload</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-signin">Sign in</button>
+                <button class="btn-contribute">Contribute →</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="upload-container">
+            <h2 class="upload-title">
+                <span class="gradient-text">Upload</span> Study Materials
+            </h2>
+            <p class="upload-subtitle">
+                Add new resources to help students in their academic journey
+            </p>
+
+            <form id="uploadForm" class="upload-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required placeholder="Enter resource title">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="branch">Branch</label>
+                        <select id="branch" name="branch" required>
+                            <option value="">Select Branch</option>
+                            <option value="CSE">Computer Science</option>
+                            <option value="IT">Information Technology</option>
+                            <option value="ECE">Electronics & Communication</option>
+                            <option value="EI">Electronics & Instrumentation</option>
+                            <option value="MECH">Mechanical Engineering</option>
+                            <option value="CIVIL">Civil Engineering</option>
+                            <option value="BDES">Bachelor of Design</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <select id="semester" name="semester" required>
+                            <option value="">Select Semester</option>
+                            <option value="1">1st Semester</option>
+                            <option value="2">2nd Semester</option>
+                            <option value="3">3rd Semester</option>
+                            <option value="4">4th Semester</option>
+                            <option value="5">5th Semester</option>
+                            <option value="6">6th Semester</option>
+                            <option value="7">7th Semester</option>
+                            <option value="8">8th Semester</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select Subject</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="faculty">Faculty Name</label>
+                    <input type="text" id="faculty" name="faculty" readonly placeholder="Faculty name will appear here">
+                </div>
+
+                <div class="form-group">
+                    <label for="file">File Upload</label>
+                    <input type="file" id="file" name="file" required accept=".pdf,.doc,.docx,.ppt,.pptx,.mp4,.avi,.mov">
+                    <div class="file-info">
+                        <span id="fileName">No file selected</span>
+                        <span id="fileSize"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="upload-btn">
+                    <span class="btn-text">Upload Resource</span>
+                    <div class="btn-loader" style="display: none;"></div>
+                </button>
+            </form>
+
+            <div id="uploadStatus" class="upload-status" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Quantum Nexus</span>
+            </div>
+            <div class="footer-links">
+                <a href="#team">Team</a>
+                <a href="branch.html">Branches</a>
+                <a href="faculty.html">Subjects</a>
+                <a href="#contribute">Contribute</a>
+            </div>
+            <div class="footer-social">
+                <p>&copy; 2026 Quantum Nexus. All resources for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="upload.js"></script>
+</body>
+</html>

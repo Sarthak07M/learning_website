@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IET Resources - Your Ultimate Academic Resource</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">IET Resources</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#branches" class="nav-link">Branches</a></li>
+                <li><a href="#subjects" class="nav-link">Subjects</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-signin" onclick="openLoginModal()">Sign in</button>
+                <button class="btn-contribute" onclick="openUploadModal()">Contribute →</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span>Introducing IET Resources</span>
+                </div>
+                <h1 class="hero-title">
+                    Collection of
+                    <br>
+                    <span class="gradient-text">your resources</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The all in one place for all your study problems.
+                    <br>
+                    Study whenever you feel like it.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="openUploadModal()">Contribute →</button>
+                    <button class="btn-secondary" onclick="scrollToBranches()">Explore →</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="orb-container">
+                    <div class="orb"></div>
+                    <div class="orb-ring"></div>
+                    <div class="orb-ring ring-2"></div>
+                    <div class="floating-text">QUANTUM</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaser Section -->
+    <section class="teaser">
+        <div class="teaser-content">
+            <div class="mystery-icon">
+                <div class="icon-glow"></div>
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" />
+                </svg>
+            </div>
+            <h2 class="teaser-title">Missing something?</h2>
+            <p class="teaser-subtitle">It will be here before exams.</p>
+        </div>
+    </section>
+
+    <!-- Branch Selection -->
+    <section id="branches" class="arena">
+        <div class="arena-header">
+            <div class="arena-icon">
+                <div class="sphere">
+                    <div class="sphere-inner"></div>
+                </div>
+            </div>
+            <h2 class="arena-title">
+                Choose your <span class="gradient-text">Branch</span>
+            </h2>
+            <p class="arena-subtitle">
+                All the resources you need to manage your academics like PYQs, notes, assignments, projects, videos and much more
+            </p>
+        </div>
+
+        <div class="branch-selection">
+            <div class="branch-card" data-branch="CSE" onclick="navigateToSemester('CSE')">
+                <span class="branch-code">CSE</span>
+                <span class="branch-label">Computer Science</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="IT" onclick="navigateToSemester('IT')">
+                <span class="branch-code">IT</span>
+                <span class="branch-label">Information Technology</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="ECE" onclick="navigateToSemester('ECE')">
+                <span class="branch-code">ECE</span>
+                <span class="branch-label">Electronics & Communication</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="EI" onclick="navigateToSemester('EI')">
+                <span class="branch-code">EI</span>
+                <span class="branch-label">Electronics & Instrumentation</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="MECH" onclick="navigateToSemester('MECH')">
+                <span class="branch-code">MECH</span>
+                <span class="branch-label">Mechanical Engineering</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="CIVIL" onclick="navigateToSemester('CIVIL')">
+                <span class="branch-code">CIVIL</span>
+                <span class="branch-label">Civil Engineering</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="branch-card" data-branch="BDES" onclick="navigateToSemester('BDES')">
+                <span class="branch-code">B.DES</span>
+                <span class="branch-label">Bachelor of Design</span>
+                <div class="card-glow"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>IET Resources</span>
+            </div>
+            <div class="footer-links">
+                <a href="#team">Team</a>
+                <a href="#branches">Branches</a>
+                <a href="#subjects">Subjects</a>
+                <a href="#contribute">Contribute</a>
+            </div>
+            <div class="footer-social">
+                <p>&copy; 2026 IET Resources. All resources for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function openLoginModal() {
+            alert('Login functionality coming soon!');
+        }
+
+        function openUploadModal() {
+            window.open('upload.html', '_blank');
+        }
+
+        function scrollToBranches() {
+            document.getElementById('branches').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function navigateToSemester(branch) {
+            window.location.href = `semester.html?branch=${encodeURIComponent(branch)}`;
+        }
+    </script>
+</body>
+</html>

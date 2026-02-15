@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Nexus - Select Semester</title>
+    <link rel="stylesheet" href="semester.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">Quantum Nexus</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="branch.html" class="nav-link">Branches</a></li>
+                <li><a href="faculty.html" class="nav-link active">Subjects</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-signin">Sign in</button>
+                <button class="btn-contribute">Contribute →</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Semester Selection Section -->
+    <section id="semesters" class="semester-section">
+        <div class="semester-header">
+            <h2 class="semester-title">
+                Select your <span class="gradient-text">Semester</span>
+            </h2>
+            <p class="semester-subtitle">Choose the semester to access your study materials</p>
+            <p class="selected-branch-info">
+                Selected Branch: <span id="selected-branch">Loading...</span>
+            </p>
+        </div>
+
+        <div class="semester-grid">
+            <div class="semester-card" data-semester="1">
+                <span class="semester-number">1</span>
+                <span class="semester-label">First Semester</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="semester-card" data-semester="2">
+                <span class="semester-number">2</span>
+                <span class="semester-label">Second Semester</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="semester-card" data-semester="3">
+                <span class="semester-number">3</span>
+                <span class="semester-label">Third Semester</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="semester-card" data-semester="4">
+                <span class="semester-number">4</span>
+                <span class="semester-label">Fourth Semester</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="semester-card" data-semester="5">
+                <span class="semester-number">5</span>
+                <span class="semester-label">Fifth Semester</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="semester-card" data-semester="6">
+                <span class="semester-number">6</span>
+                <span class="semester-label">Sixth Semester</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="semester-card" data-semester="7">
+                <span class="semester-number">7</span>
+                <span class="semester-label">Seventh Semester</span>
+                <div class="card-glow"></div>
+            </div>
+            <div class="semester-card" data-semester="8">
+                <span class="semester-number">8</span>
+                <span class="semester-label">Eighth Semester</span>
+                <div class="card-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Quantum Nexus</span>
+            </div>
+            <div class="footer-links">
+                <a href="#team">Team</a>
+                <a href="branch.html">Branches</a>
+                <a href="faculty.html">Subjects</a>
+                <a href="#contribute">Contribute</a>
+            </div>
+            <div class="footer-social">
+                <p>&copy; 2026 Quantum Nexus. All resources for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="semester.js"></script>
+</body>
+</html>
