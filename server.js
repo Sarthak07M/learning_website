@@ -8,7 +8,7 @@ const subjectsData = require('./models/Subjects');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -18,15 +18,24 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'Frontend')));
+
+// Route for root URL - send index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'Frontend', 'index.html'));
+});
+
 // Connect to MongoDB and start server
-const startServer = async () => {
-  try {
-    // Connect to MongoDB first
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/iet-portal', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+const startServer = () => {
+  // Connect to MongoDB first
+  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/iet-portal', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
     console.log('✅ Connected to MongoDB');
+    console.log('Successfully connected to IET Team Cloud!');
 
     // Configure Multer for file uploads
     const storage = multer.diskStorage({
@@ -232,11 +241,11 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`✅ Server running on http://localhost:${PORT}`);
     });
-
-  } catch (error) {
+  })
+  .catch((error) => {
     console.error('❌ Failed to start server:', error);
     process.exit(1);
-  }
+  });
 };
 
 // Start the server

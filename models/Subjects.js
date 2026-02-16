@@ -8,10 +8,12 @@ const subjectsData = {
       { code: '1CS4', name: 'English Communication', faculty: 'Prof. Meera Patel' }
     ],
     2: [
-      { code: '2CS1', name: 'Data Structures', faculty: 'Dr. Rajesh Kumar' },
-      { code: '2CS2', name: 'Mathematics-II', faculty: 'Dr. Priya Sharma' },
-      { code: '2CS3', name: 'Digital Electronics', faculty: 'Dr. Sunil Verma' },
-      { code: '2CS4', name: 'Environmental Science', faculty: 'Prof. Anita Gupta' }
+      { code: '2CS1', name: 'Applied Mathematics-II', faculty: 'Dr. Chandrashekhar' },
+      { code: '2CS2', name: 'Applied Physics', faculty: 'Dr. Shailendra' },
+      { code: '2CS3', name: 'Computer Programming', faculty: 'Er. Arpit Agrawal' },
+      { code: '2CS4', name: 'Basic Electrical Engineering', faculty: 'Ms. Ankita Sharma' },
+      { code: '2CS5', name: 'Engineering Graphics & Design', faculty: 'Dr. Omprakash' },
+      { code: '2CS6', name: 'Humanities', faculty: 'Dr. Mrs. Arti' }
     ],
     3: [
       { code: '3CS1', name: 'Operating Systems', faculty: 'Dr. Manoj Tiwari' },
@@ -20,10 +22,13 @@ const subjectsData = {
       { code: '3CS4', name: 'Software Engineering', faculty: 'Dr. Pooja Agarwal' }
     ],
     4: [
-      { code: '4CS1', name: 'Web Technologies', faculty: 'Dr. Rajesh Kumar' },
-      { code: '4CS2', name: 'Algorithm Design', faculty: 'Dr. Manoj Tiwari' },
-      { code: '4CS3', name: 'System Programming', faculty: 'Dr. Vikram Singh' },
-      { code: '4CS4', name: 'Discrete Mathematics', faculty: 'Dr. Priya Sharma' }
+      { code: '4CS1', name: 'Applied Statistics', faculty: 'Mrs. Suman Sharma' },
+      { code: '4CS2', name: 'AI & ML Fundamentals', faculty: 'Ms. Vedpriya Dongre' },
+      { code: '4CS3', name: 'Database Management Systems', faculty: 'Dr. Vaibhav Jain' },
+      { code: '4CS4', name: 'Operating Systems', faculty: 'Mr. Lalit Gehlot' },
+      { code: '4CS5', name: 'Theory of Computation', faculty: 'Dr. B.K. Joshi' },
+      { code: '4CS6', name: 'Introduction to Financial Literacy', faculty: 'Mr. Dhruv Somani' },
+      { code: '4CS7', name: 'IoT Lab', faculty: 'Mr. Vikas Vankhede' }
     ],
     5: [
       { code: '5CS1', name: 'Machine Learning', faculty: 'Dr. Neha Jain' },

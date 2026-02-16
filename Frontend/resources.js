@@ -11,6 +11,8 @@ let selectedBranch = getUrlParameter('branch');
 let selectedSemester = getUrlParameter('semester');
 let selectedSubject = getUrlParameter('subject');
 let selectedSubjectCode = getUrlParameter('code');
+let selectedFaculty = null;
+let allResources = [];
 
 // ========== NAVIGATION SCROLL EFFECT ==========
 window.addEventListener('scroll', () => {
@@ -120,18 +122,135 @@ async function fetchResources() {
         const data = await response.json();
 
         if (data.success) {
-            displayResources(data.data);
+            allResources = data.data;
+            displayResources(allResources);
+            displayFacultyFilter(allResources);
         } else {
             console.error('API returned error:', data.message);
             // Use mock data for testing
             console.log('Using mock data for testing...');
-            displayResources(getMockResources());
+            allResources = getMockResources();
+            displayResources(allResources);
+            displayFacultyFilter(allResources);
         }
     } catch (error) {
         console.error('Error fetching resources:', error);
         // Use mock data when API is not available
         console.log('API not available, using mock data for testing...');
-        displayResources(getMockResources());
+        allResources = getMockResources();
+        displayResources(allResources);
+        displayFacultyFilter(allResources);
+    }
+}
+
+// ========== DISPLAY FACULTY FILTER BUTTONS ==========
+function displayFacultyFilter(resources) {
+    // Extract unique faculty names from resources
+    const facultyNames = [...new Set(resources.map(r => r.uploadedBy).filter(Boolean))];
+    
+    if (facultyNames.length === 0) {
+        return; // No faculty to display
+    }
+    
+    // Check if faculty filter container already exists
+    let filterContainer = document.querySelector('.faculty-filter');
+    
+    if (!filterContainer) {
+        // Create the filter container
+        filterContainer = document.createElement('div');
+        filterContainer.className = 'faculty-filter';
+        
+        // Insert before the resources grid
+        const resourcesGrid = document.querySelector('.resources-grid');
+        const resourcesSection = document.querySelector('.resources');
+        if (resourcesGrid && resourcesSection) {
+            resourcesSection.insertBefore(filterContainer, resourcesGrid);
+        }
+    }
+    
+    // Build the filter HTML
+    filterContainer.innerHTML = `
+        <div class="faculty-filter-label">Filter by Faculty:</div>
+        <div class="faculty-buttons">
+            <button class="faculty-btn ${selectedFaculty === null ? 'active' : ''}" data-faculty="all">
+                All
+            </button>
+            ${facultyNames.map(faculty => `
+                <button class="faculty-btn ${selectedFaculty === faculty ? 'active' : ''}" data-faculty="${faculty}">
+                    ${faculty}
+                </button>
+            `).join('')}
+        </div>
+    `;
+    
+    // Add event listeners to buttons
+    filterContainer.querySelectorAll('.faculty-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const faculty = btn.getAttribute('data-faculty');
+            
+            // Update selected faculty
+            selectedFaculty = faculty === 'all' ? null : faculty;
+            
+            // Update button states
+            filterContainer.querySelectorAll('.faculty-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Filter resources
+            if (selectedFaculty === null) {
+                displayResources(allResources);
+            } else {
+                const filteredResources = allResources.filter(r => r.uploadedBy === selectedFaculty);
+                displayResources(filteredResources);
+            }
+        });
+    });
+    
+    // Add styles for faculty filter
+    if (!document.querySelector('#faculty-filter-styles')) {
+        const filterStyles = document.createElement('style');
+        filterStyles.id = 'faculty-filter-styles';
+        filterStyles.textContent = `
+            .faculty-filter {
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+                background: rgba(21, 21, 21, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 15px;
+                backdrop-filter: blur(10px);
+            }
+            .faculty-filter-label {
+                font-size: 1rem;
+                color: var(--text-secondary);
+                margin-bottom: 1rem;
+                font-weight: 500;
+            }
+            .faculty-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            .faculty-btn {
+                padding: 0.6rem 1.2rem;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 25px;
+                color: var(--text-primary);
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .faculty-btn:hover {
+                background: rgba(0, 255, 136, 0.1);
+                border-color: var(--primary-green);
+            }
+            .faculty-btn.active {
+                background: linear-gradient(135deg, var(--primary-green), var(--primary-cyan));
+                color: var(--dark-bg);
+                border-color: transparent;
+                font-weight: 600;
+            }
+        `;
+        document.head.appendChild(filterStyles);
     }
 }
 
