@@ -21,6 +21,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Mount page routes (dynamic branch/semester routes)
+const pageRouter = require('./routes/pagesRoutes');
+app.use('/', pageRouter);
+
 // Route for root URL - send index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'htmlfiles','index.html'));

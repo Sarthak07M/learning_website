@@ -8,6 +8,14 @@ function getUrlParameter(name) {
 
 // ========== STATE MANAGEMENT ==========
 let selectedBranch = getUrlParameter('branch');
+
+// Fallback: if branch not supplied as query param, try to parse from pathname (/branch/sem)
+if (!selectedBranch) {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    if (parts.length >= 2 && parts[1].toLowerCase() === 'sem') {
+        selectedBranch = parts[0];
+    }
+}
 let selectedSemester = null;
 
 // ========== NAVIGATION SCROLL EFFECT ==========
@@ -48,9 +56,10 @@ semesterCards.forEach(card => {
         // Add ripple effect
         createRipple(this, e);
         
-        // Navigate to /htmlfiles/faculty.html with branch and semester
+        // Navigate to branch/sem{semester} route (clean URL format)
+        const branchSlug = selectedBranch ? selectedBranch.toUpperCase().replace(/\./g, '').replace(/\s+/g, '') : '';
         setTimeout(() => {
-            window.location.href = `/htmlfiles/faculty.html?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(semester)}`;
+            window.location.href = `/${encodeURIComponent(branchSlug)}/sem${encodeURIComponent(semester)}`;
         }, 300);
     });
 });

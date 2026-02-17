@@ -27,9 +27,10 @@ branchCards.forEach(card => {
         // Add ripple effect
         createRipple(this, e);
 
-        // Navigate to /htmlfiles/semester.html with branch parameter
+        // Navigate to the branch route; server will serve semester page
+        const branchSlug = branch.toUpperCase().replace(/\./g, '').replace(/\s+/g, '');
         setTimeout(() => {
-            window.location.href = `/htmlfiles/semester.html?branch=${encodeURIComponent(branch)}`;
+            window.location.href = `/${encodeURIComponent(branchSlug)}/sem`;
         }, 300);
     });
 });
