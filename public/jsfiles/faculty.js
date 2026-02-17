@@ -10,6 +10,21 @@ function getUrlParameter(name) {
 let selectedBranch = getUrlParameter('branch');
 let selectedSemester = getUrlParameter('semester');
 
+// Fallback: parse from pathname like /branch/sem2 or /branch/2 when query params are not provided
+if (!selectedBranch || !selectedSemester) {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    if (parts.length >= 2) {
+        if (!selectedBranch) selectedBranch = parts[0];
+        // Check for /branch/sem{number} format first
+        if (!selectedSemester && parts[1].startsWith('sem')) {
+            selectedSemester = parts[1].substring(3); // Extract number after 'sem'
+        } else if (!selectedSemester && /^\d+$/.test(parts[1])) {
+            // Fallback to /branch/number format
+            selectedSemester = parts[1];
+        }
+    }
+}
+
 // ========== NAVIGATION SCROLL EFFECT ==========
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -62,9 +77,10 @@ subjectCards.forEach(card => {
         // Add ripple effect
         createRipple(this, e);
         
-        // Navigate to /htmlfiles/resources.html with all parameters
+        // Navigate to /branch/sem{semester}/subject route (clean URL)
+        const branchSlug = selectedBranch ? selectedBranch.toUpperCase().replace(/\./g, '').replace(/\s+/g, '') : '';
         setTimeout(() => {
-            window.location.href = `/htmlfiles/resources.html?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(subject)}&code=${encodeURIComponent(code)}`;
+            window.location.href = `/${encodeURIComponent(branchSlug)}/sem${encodeURIComponent(selectedSemester)}/${encodeURIComponent(subject)}`;
         }, 300);
     });
 });

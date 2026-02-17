@@ -11,6 +11,20 @@ let selectedBranch = getUrlParameter('branch');
 let selectedSemester = getUrlParameter('semester');
 let selectedSubject = getUrlParameter('subject');
 let selectedSubjectCode = getUrlParameter('code');
+
+// Fallback: parse from pathname like /branch/sem{number}/subject when query params are not provided
+if (!selectedBranch || !selectedSemester || !selectedSubject) {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    if (parts.length >= 3) {
+        if (!selectedBranch) selectedBranch = parts[0];
+        // Check for /branch/sem{number}/subject format
+        if (!selectedSemester && parts[1].startsWith('sem')) {
+            selectedSemester = parts[1].substring(3); // Extract number after 'sem'
+        }
+        if (!selectedSubject && parts[2]) selectedSubject = decodeURIComponent(parts[2]);
+    }
+}
+
 let selectedFaculty = null;
 let allResources = [];
 

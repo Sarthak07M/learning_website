@@ -185,7 +185,8 @@
         }
 
         function navigateToSemester(branch) {
-            window.location.href = `/htmlfiles/semester.html?branch=${encodeURIComponent(branch)}`;
+            const branchSlug = branch.toUpperCase().replace(/\./g, '').replace(/\s+/g, '');
+            window.location.href = `/${encodeURIComponent(branchSlug)}/sem`;
         }
     </script>
 </body>
