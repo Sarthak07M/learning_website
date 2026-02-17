@@ -48,9 +48,9 @@ semesterCards.forEach(card => {
         // Add ripple effect
         createRipple(this, e);
         
-        // Navigate to faculty.html with branch and semester
+        // Navigate to /htmlfiles/faculty.html with branch and semester
         setTimeout(() => {
-            window.location.href = `faculty.html?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(semester)}`;
+            window.location.href = `/htmlfiles/faculty.html?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(semester)}`;
         }, 300);
     });
 });

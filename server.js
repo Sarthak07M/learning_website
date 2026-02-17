@@ -19,11 +19,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Serve static frontend files
-app.use(express.static(path.join(__dirname, 'Frontend')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Route for root URL - send index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'htmlfiles','index.html'));
 });
 
 // Connect to MongoDB and start server

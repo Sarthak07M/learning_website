@@ -1,15 +1,3 @@
-// ========== GET URL PARAMETERS ==========
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
-
-// ========== STATE MANAGEMENT ==========
-let selectedBranch = getUrlParameter('branch');
-let selectedSemester = getUrlParameter('semester');
-
 // ========== NAVIGATION SCROLL EFFECT ==========
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -29,42 +17,19 @@ hamburger?.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// ========== UPDATE SELECTED INFO ==========
-function updateSelectedInfo() {
-    const branchDisplay = document.getElementById('selected-branch');
-    const semesterDisplay = document.getElementById('selected-semester');
-    
-    if (branchDisplay && selectedBranch) {
-        branchDisplay.textContent = selectedBranch;
-    }
-    
-    if (semesterDisplay && selectedSemester) {
-        semesterDisplay.textContent = `Semester ${selectedSemester}`;
-    }
-}
+// ========== BRANCH CARD INTERACTIONS ==========
+const branchCards = document.querySelectorAll('.branch-card');
 
-// ========== SUBJECT CARD ANIMATIONS ==========
-const subjectCards = document.querySelectorAll('.subject-card');
-
-subjectCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.zIndex = '10';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.zIndex = '1';
-    });
-    
+branchCards.forEach(card => {
     card.addEventListener('click', function(e) {
-        const subject = this.getAttribute('data-subject');
-        const code = this.getAttribute('data-code');
-        
+        const branch = this.getAttribute('data-branch');
+
         // Add ripple effect
         createRipple(this, e);
-        
-        // Navigate to resources.html with all parameters
+
+        // Navigate to /htmlfiles/semester.html with branch parameter
         setTimeout(() => {
-            window.location.href = `resources.html?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(subject)}&code=${encodeURIComponent(code)}`;
+            window.location.href = `/htmlfiles/semester.html?branch=${encodeURIComponent(branch)}`;
         }, 300);
     });
 });
@@ -76,22 +41,22 @@ function createRipple(element, event) {
     const size = Math.max(rect.width, rect.height);
     const x = event.clientX - rect.left - size / 2;
     const y = event.clientY - rect.top - size / 2;
-    
+
     ripple.style.cssText = `
         position: absolute;
         width: ${size}px;
         height: ${size}px;
         border-radius: 50%;
-        background: rgba(0, 255, 136, 0.3);
+        background: rgba(0, 212, 255, 0.3);
         top: ${y}px;
         left: ${x}px;
         pointer-events: none;
         animation: rippleEffect 0.6s ease-out;
     `;
-    
+
     element.style.position = 'relative';
     element.appendChild(ripple);
-    
+
     setTimeout(() => ripple.remove(), 600);
 }
 
@@ -115,23 +80,23 @@ document.head.appendChild(style);
 function createParticles() {
     const particleContainer = document.querySelector('.bg-animation');
     if (!particleContainer) return;
-    
+
     const particleCount = 10;
-    
+
     for (let i = 5; i < particleCount + 5; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
-        
+
         const randomX = Math.random() * 100;
         const randomY = Math.random() * 100;
         const randomDelay = Math.random() * 10;
         const randomDuration = 20 + Math.random() * 15;
-        
+
         particle.style.left = `${randomX}%`;
         particle.style.top = `${randomY}%`;
         particle.style.animationDelay = `${randomDelay}s`;
         particle.style.animationDuration = `${randomDuration}s`;
-        
+
         particleContainer.appendChild(particle);
     }
 }
@@ -153,13 +118,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all major sections and cards
-document.querySelectorAll('.subject-card, .subjects-header').forEach(el => {
+// Observe branch cards
+document.querySelectorAll('.branch-card, .arena-header').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
-});
-
-// ========== INITIALIZE ==========
-document.addEventListener('DOMContentLoaded', () => {
-    updateSelectedInfo();
 });
