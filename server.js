@@ -15,6 +15,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// View engine setup (EJS)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
