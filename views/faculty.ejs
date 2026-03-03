@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Nexus - Select Subject</title>
+    <link rel="stylesheet" href="/cssfiles/faculty.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">IET Resources</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/htmlfiles/index.html" class="nav-link">Home</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="/htmlfiles/branch.html" class="nav-link">Branches</a></li>
+                <li><a href="/htmlfiles/faculty.html" class="nav-link active">Subjects</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-signin">Sign in</button>
+                <button class="btn-contribute">Contribute →</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subjects Section -->
+    <section id="subjects" class="subjects">
+        <div class="subjects-header">
+            <h2 class="subjects-title">
+                Your <span class="gradient-text">Subjects</span>
+            </h2>
+            <p class="selected-info">
+                <span id="selected-branch"><%= branch || 'Select a branch' %></span> • 
+                <span id="selected-semester"><% if (semester) { %>Semester <%= semester %><% } else { %>Select a semester<% } %></span>
+            </p>
+        </div>
+
+        <div class="subjects-grid">
+            <% if (subjects && subjects.length) { %>
+                <% subjects.forEach(function(sub){ %>
+                    <div class="subject-card" data-subject="<%= sub.name %>" data-code="<%= sub.code %>">
+                        <div class="card-bg"></div>
+                        <div class="card-code"><%= sub.code %></div>
+                        <h3 class="card-title"><%- sub.name.toUpperCase().split(' ').join('<br>') %></h3>
+                        <div class="card-info">
+                            <p class="subject-code"><%= sub.code %></p>
+                            <p class="subject-name"><%= sub.name %></p>
+                            <div class="contributors">
+                                <span class="contributor"><%= sub.faculty %></span>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="no-subjects">No subjects found for <%= branch %> semester <%= semester %></p>
+            <% } %>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Quantum Nexus</span>
+            </div>
+            <div class="footer-links">
+                <a href="#team">Team</a>
+                <a href="/htmlfiles/branch.html">Branches</a>
+                <a href="/htmlfiles/faculty.html">Subjects</a>
+                <a href="#contribute">Contribute</a>
+            </div>
+            <div class="footer-social">
+                <p>&copy; 2026 Quantum Nexus. All resources for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/jsfiles/faculty.js"></script>
+</body>
+</html>
