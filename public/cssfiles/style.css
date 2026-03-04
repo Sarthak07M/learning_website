@@ -626,6 +626,238 @@ body {
     color: var(--text-secondary);
 }
 
+/* ========== TEAM SECTION ========== */
+.team {
+    min-height: 100vh;
+    padding: 7rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+    animation: teamGlowFloat 12s ease-in-out infinite;
+}
+
+.team-bg-glow-1 {
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.3), transparent 70%);
+    top: 8%;
+    left: -80px;
+}
+
+.team-bg-glow-2 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.28), transparent 70%);
+    right: -120px;
+    bottom: 5%;
+    animation-delay: 2s;
+}
+
+@keyframes teamGlowFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.05);
+    }
+}
+
+.team-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.team-title {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--primary-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.team-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+}
+
+.team-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.team-card {
+    background: linear-gradient(145deg, rgba(30, 30, 30, 0.75), rgba(15, 15, 15, 0.78));
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 24px;
+    overflow: visible;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    padding: 4.5rem 1.4rem 1.4rem;
+    isolation: isolate;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.5), rgba(0, 212, 255, 0.4), rgba(179, 102, 255, 0.35));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.45;
+    transition: opacity 0.35s ease;
+}
+
+.team-card::after {
+    content: '';
+    position: absolute;
+    inset: 14% 8% auto;
+    height: 120px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.2), transparent 70%);
+    filter: blur(30px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary-green);
+    box-shadow: 0 20px 55px rgba(0, 255, 136, 0.25), 0 0 24px rgba(0, 212, 255, 0.18);
+}
+
+.team-card:hover::before {
+    opacity: 0.95;
+}
+
+.team-card:hover::after {
+    opacity: 1;
+}
+
+.team-image-wrap {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 22px rgba(0, 255, 136, 0.16);
+    position: absolute;
+    top: -54px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.16), rgba(0, 212, 255, 0.16));
+    z-index: 2;
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.team-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-image {
+    transform: scale(1.12);
+}
+
+.team-card:hover .team-image-wrap {
+    border-color: rgba(0, 255, 136, 0.65);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 28px rgba(0, 255, 136, 0.28);
+}
+
+.team-content {
+    padding: 0.5rem 0.4rem 0.2rem;
+    text-align: center;
+}
+
+.team-name {
+    font-size: 1.28rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.team-role {
+    color: var(--primary-green);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.95rem;
+}
+
+.team-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    min-height: 84px;
+}
+
+.team-socials {
+    margin-top: 1.1rem;
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+}
+
+.team-social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    transition: all 0.32s ease;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.team-social-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+.team-social-link:hover {
+    color: #ffffff;
+    border-color: transparent;
+    transform: translateY(-2px) scale(1.05);
+}
+
+.team-social-link.github-link:hover {
+    background: linear-gradient(135deg, #171515, #2f2f2f);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+}
+
+.team-social-link.linkedin-link:hover {
+    background: linear-gradient(135deg, #0A66C2, #25a1ff);
+    box-shadow: 0 0 22px rgba(37, 161, 255, 0.45);
+}
+
 /* ========== BRANCH SELECTION SECTION ========== */
 .arena {
     min-height: 100vh;
@@ -1108,9 +1340,14 @@ body {
     }
     
     .arena-title,
+    .team-title,
     .semester-title,
     .subjects-title {
         font-size: 3rem;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -1142,6 +1379,7 @@ body {
     }
     
     .branch-selection,
+    .team-grid,
     .semester-grid {
         grid-template-columns: 1fr;
     }
@@ -1166,6 +1404,7 @@ body {
     }
     
     .arena-title,
+    .team-title,
     .semester-title,
     .subjects-title {
         font-size: 2.5rem;
