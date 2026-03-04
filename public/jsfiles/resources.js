@@ -25,7 +25,6 @@ if (!selectedBranch || !selectedSemester || !selectedSubject) {
     }
 }
 
-let selectedFaculty = null;
 let allResources = [];
 
 // ========== NAVIGATION SCROLL EFFECT ==========
@@ -138,14 +137,12 @@ async function fetchResources() {
         if (data.success) {
             allResources = data.data;
             displayResources(allResources);
-            displayFacultyFilter(allResources);
         } else {
             console.error('API returned error:', data.message);
             // Use mock data for testing
             console.log('Using mock data for testing...');
             allResources = getMockResources();
             displayResources(allResources);
-            displayFacultyFilter(allResources);
         }
     } catch (error) {
         console.error('Error fetching resources:', error);
@@ -153,118 +150,6 @@ async function fetchResources() {
         console.log('API not available, using mock data for testing...');
         allResources = getMockResources();
         displayResources(allResources);
-        displayFacultyFilter(allResources);
-    }
-}
-
-// ========== DISPLAY FACULTY FILTER BUTTONS ==========
-function displayFacultyFilter(resources) {
-    // Extract unique faculty names from resources
-    const facultyNames = [...new Set(resources.map(r => r.uploadedBy).filter(Boolean))];
-    
-    if (facultyNames.length === 0) {
-        return; // No faculty to display
-    }
-    
-    // Check if faculty filter container already exists
-    let filterContainer = document.querySelector('.faculty-filter');
-    
-    if (!filterContainer) {
-        // Create the filter container
-        filterContainer = document.createElement('div');
-        filterContainer.className = 'faculty-filter';
-        
-        // Insert before the resources grid
-        const resourcesGrid = document.querySelector('.resources-grid');
-        const resourcesSection = document.querySelector('.resources');
-        if (resourcesGrid && resourcesSection) {
-            resourcesSection.insertBefore(filterContainer, resourcesGrid);
-        }
-    }
-    
-    // Build the filter HTML
-    filterContainer.innerHTML = `
-        <div class="faculty-filter-label">Filter by Faculty:</div>
-        <div class="faculty-buttons">
-            <button class="faculty-btn ${selectedFaculty === null ? 'active' : ''}" data-faculty="all">
-                All
-            </button>
-            ${facultyNames.map(faculty => `
-                <button class="faculty-btn ${selectedFaculty === faculty ? 'active' : ''}" data-faculty="${faculty}">
-                    ${faculty}
-                </button>
-            `).join('')}
-        </div>
-    `;
-    
-    // Add event listeners to buttons
-    filterContainer.querySelectorAll('.faculty-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const faculty = btn.getAttribute('data-faculty');
-            
-            // Update selected faculty
-            selectedFaculty = faculty === 'all' ? null : faculty;
-            
-            // Update button states
-            filterContainer.querySelectorAll('.faculty-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Filter resources
-            if (selectedFaculty === null) {
-                displayResources(allResources);
-            } else {
-                const filteredResources = allResources.filter(r => r.uploadedBy === selectedFaculty);
-                displayResources(filteredResources);
-            }
-        });
-    });
-    
-    // Add styles for faculty filter
-    if (!document.querySelector('#faculty-filter-styles')) {
-        const filterStyles = document.createElement('style');
-        filterStyles.id = 'faculty-filter-styles';
-        filterStyles.textContent = `
-            .faculty-filter {
-                margin-bottom: 2rem;
-                padding: 1.5rem;
-                background: rgba(21, 21, 21, 0.8);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 15px;
-                backdrop-filter: blur(10px);
-            }
-            .faculty-filter-label {
-                font-size: 1rem;
-                color: var(--text-secondary);
-                margin-bottom: 1rem;
-                font-weight: 500;
-            }
-            .faculty-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.75rem;
-            }
-            .faculty-btn {
-                padding: 0.6rem 1.2rem;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 25px;
-                color: var(--text-primary);
-                font-size: 0.9rem;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            .faculty-btn:hover {
-                background: rgba(0, 255, 136, 0.1);
-                border-color: var(--primary-green);
-            }
-            .faculty-btn.active {
-                background: linear-gradient(135deg, var(--primary-green), var(--primary-cyan));
-                color: var(--dark-bg);
-                border-color: transparent;
-                font-weight: 600;
-            }
-        `;
-        document.head.appendChild(filterStyles);
     }
 }
 
@@ -291,71 +176,106 @@ function displayResources(resources) {
         return;
     }
 
-    // Group resources by type
-    const resourcesByType = {};
-    resources.forEach(resource => {
-        const type = resource.fileType || 'other';
-        if (!resourcesByType[type]) {
-            resourcesByType[type] = [];
-        }
-        resourcesByType[type].push(resource);
+    const getTitle = (resource) => (resource.title || '').toLowerCase();
+
+    const notesResources = resources.filter(resource => {
+        const title = getTitle(resource);
+        return title.includes('note') || title.includes('notes') || title.includes('lecture');
     });
 
-    // Create resource cards for each type
-    const resourceTypes = {
-        'pdf': { title: 'PDF Documents', icon: '📄', description: 'Notes, assignments, and study materials' },
-        'doc': { title: 'Word Documents', icon: '📝', description: 'Editable documents and assignments' },
-        'docx': { title: 'Word Documents', icon: '📝', description: 'Editable documents and assignments' },
-        'ppt': { title: 'Presentations', icon: '📊', description: 'Slides and lecture presentations' },
-        'pptx': { title: 'Presentations', icon: '📊', description: 'Slides and lecture presentations' },
-        'video': { title: 'Video Lectures', icon: '🎥', description: 'Recorded lectures and tutorials' }
+    const endSemResources = resources.filter(resource => {
+        const title = getTitle(resource);
+        return title.includes('end sem') || title.includes('end-sem') || title.includes('end semester') || title.includes('final');
+    });
+
+    const getMstResources = (mstNumber) => resources.filter(resource => {
+        const title = getTitle(resource);
+        const hasMstKeyword = title.includes('mst') || title.includes('mid sem') || title.includes('mid-sem');
+        if (!hasMstKeyword) {
+            return false;
+        }
+
+        const mstPattern = new RegExp(`(mst|mid\\s?sem|mid-sem)[\\s-]*${mstNumber}\\b`);
+        return mstPattern.test(title);
+    });
+
+    const mst1Resources = getMstResources(1);
+    const mst2Resources = getMstResources(2);
+    const mst3Resources = getMstResources(3);
+    const allMstResources = [...mst1Resources, ...mst2Resources, ...mst3Resources];
+
+    resourcesGrid.innerHTML = `
+        <div class="resource-card" data-category="notes">
+            <div class="resource-icon">📄</div>
+            <h3 class="resource-title">Notes</h3>
+            <p class="resource-description">Comprehensive study notes and lecture materials</p>
+            <button class="resource-btn" data-category="notes">View Notes →</button>
+        </div>
+
+        <div class="resource-card pyq-card" data-category="mst">
+            <div class="resource-icon">📝</div>
+            <h3 class="resource-title">MST Papers</h3>
+            <p class="resource-description">Select MST 1, MST 2, or MST 3 papers</p>
+            <div class="pyq-sections mst-sections">
+                <button class="resource-btn pyq-btn" data-type="mst-1">MST 1</button>
+                <button class="resource-btn pyq-btn" data-type="mst-2">MST 2</button>
+                <button class="resource-btn pyq-btn" data-type="mst-3">MST 3</button>
+            </div>
+        </div>
+
+        <div class="resource-card" data-category="end-sem">
+            <div class="resource-icon">📚</div>
+            <h3 class="resource-title">End Sem Papers</h3>
+            <p class="resource-description">Previous year end semester papers</p>
+            <button class="resource-btn" data-category="end-sem">View End Sem →</button>
+        </div>
+    `;
+
+    const showCategoryModal = (category) => {
+        if (category === 'notes') {
+            showResourceModal(notesResources, 'Notes');
+            return;
+        }
+        if (category === 'end-sem') {
+            showResourceModal(endSemResources, 'End Semester Papers');
+            return;
+        }
+        if (category === 'mst') {
+            showResourceModal(allMstResources, 'MST Papers');
+        }
     };
 
-    Object.keys(resourceTypes).forEach(type => {
-        if (resourcesByType[type] && resourcesByType[type].length > 0) {
-            const typeResources = resourcesByType[type];
-            const typeInfo = resourceTypes[type];
-
-            const card = document.createElement('div');
-            card.className = 'resource-card';
-            card.innerHTML = `
-                <div class="resource-icon">
-                    ${typeInfo.icon}
-                </div>
-                <h3 class="resource-title">${typeInfo.title}</h3>
-                <p class="resource-description">${typeInfo.description}</p>
-                <div class="resource-count">${typeResources.length} file${typeResources.length > 1 ? 's' : ''}</div>
-                <button class="resource-btn">View ${typeInfo.title} →</button>
-            `;
-
-            // Add click handler
-            card.addEventListener('click', (e) => {
-                createRipple(card, e);
-                showResourceModal(typeResources, typeInfo.title);
-            });
-
-            resourcesGrid.appendChild(card);
-        }
+    resourcesGrid.querySelectorAll('.resource-card[data-category]').forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('.pyq-btn')) {
+                return;
+            }
+            createRipple(card, e);
+            showCategoryModal(card.getAttribute('data-category'));
+        });
     });
 
-    // Handle PYQ buttons separately
-    const pyqButtons = document.querySelectorAll('.pyq-btn');
-    pyqButtons.forEach(btn => {
+    resourcesGrid.querySelectorAll('.resource-btn[data-category]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            createRipple(button, e);
+            showCategoryModal(button.getAttribute('data-category'));
+        });
+    });
+
+    resourcesGrid.querySelectorAll('.pyq-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const type = btn.getAttribute('data-type');
-            const pyqResources = resources.filter(r => {
-                const title = r.title.toLowerCase();
-                if (type === 'mst') {
-                    return title.includes('mst') || title.includes('mid') || title.includes('mid-sem');
-                } else if (type === 'end-sem') {
-                    return title.includes('end') || title.includes('final') || title.includes('semester');
-                }
-                return false;
-            });
-
             createRipple(btn, e);
-            showResourceModal(pyqResources, type === 'mst' ? 'Mid Semester Tests' : 'End Semester Papers');
+
+            const type = btn.getAttribute('data-type');
+            if (type === 'mst-1') {
+                showResourceModal(mst1Resources, 'MST 1 Papers');
+            } else if (type === 'mst-2') {
+                showResourceModal(mst2Resources, 'MST 2 Papers');
+            } else if (type === 'mst-3') {
+                showResourceModal(mst3Resources, 'MST 3 Papers');
+            }
         });
     });
 }
@@ -378,7 +298,11 @@ function showResourceModal(resources, title) {
                 <button class="modal-close" onclick="closeResourceModal()">×</button>
             </div>
             <div class="modal-body">
-                ${resources.map(resource => `
+                ${resources.length === 0 ? `
+                    <div class="no-resources-modal">
+                        No resources available in this category yet.
+                    </div>
+                ` : resources.map(resource => `
                     <div class="resource-item" onclick="openResource('${resource.fileURL}', '${resource.title}')">
                         <div class="resource-item-icon">📄</div>
                         <div class="resource-item-info">
@@ -501,6 +425,13 @@ function showResourceModal(resources, title) {
                 font-size: 1.5rem;
                 color: var(--primary-green);
                 margin-left: 1rem;
+            }
+            .no-resources-modal {
+                padding: 1.5rem;
+                border: 1px dashed rgba(255, 255, 255, 0.2);
+                border-radius: 12px;
+                color: var(--text-secondary);
+                text-align: center;
             }
             @keyframes modalFadeIn {
                 from {

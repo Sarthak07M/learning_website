@@ -411,6 +411,18 @@ body {
     box-shadow: 0 0 30px var(--glow-green);
 }
 
+.pyq-sections {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mst-sections .resource-btn {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.85rem;
+}
+
 /* ========== FOOTER ========== */
 .footer {
     background: var(--card-bg);
