@@ -281,6 +281,12 @@
     border-color: transparent;
 }
 
+.team-social-link-premium.instagram:hover {
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    box-shadow: 0 0 20px rgba(221, 42, 123, 0.45);
+    border-color: transparent;
+}
+
 .reveal-card {
     opacity: 0;
     transform: translateY(20px);
