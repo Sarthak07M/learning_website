@@ -2,10 +2,12 @@
 const subjectsData = {
   CSE: {
     1: [
-      { code: '1CS1', name: 'Computer Programming', faculty: 'Dr. Rajesh Kumar' },
-      { code: '1CS2', name: 'Mathematics-I', faculty: 'Dr. Priya Sharma' },
-      { code: '1CS3', name: 'Physics', faculty: 'Dr. Amit Singh' },
-      { code: '1CS4', name: 'English Communication', faculty: 'Prof. Meera Patel' }
+      { code: '2RABS1', name: 'Applied Mathematics-II', faculty: 'CC (Dr. Chandrashekhar)' },
+      { code: '2RABS2', name: 'Applied Physics', faculty: 'SSK (Dr. Shailendra)' },
+      { code: '2RCES3', name: 'Computer Programming', faculty: 'AA (Er. Arpit Agrawal)' },
+      { code: '2REES4', name: 'Basic Electrical Engineering', faculty: 'VAS (Ms. Ankita Sharma)' },
+      { code: '2RMES5', name: 'Engineering Graphics & Design', faculty: 'OS (Dr. Omprakash)' },
+      { code: '2RAHS6', name: 'Humanities', faculty: 'ASR (Dr. Mrs. Arti)' }
     ],
     2: [
       { code: '2CS1', name: 'Applied Mathematics-II', faculty: 'Dr. Chandrashekhar' },
@@ -22,13 +24,13 @@ const subjectsData = {
       { code: '3CS4', name: 'Software Engineering', faculty: 'Dr. Pooja Agarwal' }
     ],
     4: [
-      { code: '4CS1', name: 'Applied Statistics', faculty: 'Mrs. Suman Sharma' },
-      { code: '4CS2', name: 'AI & ML Fundamentals', faculty: 'Ms. Vedpriya Dongre' },
-      { code: '4CS3', name: 'Database Management Systems', faculty: 'Dr. Vaibhav Jain' },
-      { code: '4CS4', name: 'Operating Systems', faculty: 'Mr. Lalit Gehlot' },
-      { code: '4CS5', name: 'Theory of Computation', faculty: 'Dr. B.K. Joshi' },
-      { code: '4CS6', name: 'Introduction to Financial Literacy', faculty: 'Mr. Dhruv Somani' },
-      { code: '4CS7', name: 'IoT Lab', faculty: 'Mr. Vikas Vankhede' }
+      { code: '4RCPC1', name: 'Applied Statistics', faculty: 'VSS (Mrs. Suman Sharma)' },
+      { code: '4RCPC2', name: 'AI & ML Fundamentals', faculty: 'VD (Ms. Vedpriya Dongre)' },
+      { code: '4RCPC3', name: 'Database Management Systems', faculty: 'VJ (Dr. Vaibhav Jain)' },
+      { code: '4RCPC4', name: 'Operating Systems', faculty: 'LG (Mr. Lalit Gehlot)' },
+      { code: '4RCPC5', name: 'Theory of Computation', faculty: 'BK (Dr. B.K. Joshi)' },
+      { code: '4RCHS1', name: 'Introduction to Financial Literacy', faculty: 'DS (Mr. Dhruv Somani)' },
+      { code: '4RCPC6', name: 'IoT Lab', faculty: 'VV (Mr. Vikas Vankhede)' }
     ],
     5: [
       { code: '5CS1', name: 'Machine Learning', faculty: 'Dr. Neha Jain' },
