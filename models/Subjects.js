@@ -24,13 +24,12 @@ const subjectsData = {
       { code: '3CS4', name: 'Software Engineering', faculty: 'Dr. Pooja Agarwal' }
     ],
     4: [
-      { code: '4RCPC1', name: 'Applied Statistics', faculty: 'VSS (Mrs. Suman Sharma)' },
-      { code: '4RCPC2', name: 'AI & ML Fundamentals', faculty: 'VD (Ms. Vedpriya Dongre)' },
-      { code: '4RCPC3', name: 'Database Management Systems', faculty: 'VJ (Dr. Vaibhav Jain)' },
-      { code: '4RCPC4', name: 'Operating Systems', faculty: 'LG (Mr. Lalit Gehlot)' },
-      { code: '4RCPC5', name: 'Theory of Computation', faculty: 'BK (Dr. B.K. Joshi)' },
-      { code: '4RCHS1', name: 'Introduction to Financial Literacy', faculty: 'DS (Mr. Dhruv Somani)' },
-      { code: '4RCPC6', name: 'IoT Lab', faculty: 'VV (Mr. Vikas Vankhede)' }
+      { code: '4CSE1', name: 'Applied Statistics', faculty: 'TBD' },
+      { code: '4CSE2', name: 'Operating Systems', faculty: 'TBD' },
+      { code: '4CSE3', name: 'Artificial Intelligence & Machine Learning', faculty: 'TBD' },
+      { code: '4CSE4', name: 'Database Management Systems', faculty: 'TBD' },
+      { code: '4CSE5', name: 'Theory of Computation', faculty: 'TBD' },
+      { code: '4CSE6', name: 'Introduction to Financial Literacy', faculty: 'TBD' }
     ],
     5: [
       { code: '5CS1', name: 'Machine Learning', faculty: 'Dr. Neha Jain' },
@@ -39,10 +38,12 @@ const subjectsData = {
       { code: '5CS4', name: 'Cryptography', faculty: 'Dr. Pooja Agarwal' }
     ],
     6: [
-      { code: '6CS1', name: 'Cloud Computing', faculty: 'Dr. Rajesh Kumar' },
-      { code: '6CS2', name: 'Big Data Analytics', faculty: 'Dr. Neha Jain' },
-      { code: '6CS3', name: 'IoT', faculty: 'Dr. Vikram Singh' },
-      { code: '6CS4', name: 'Project Management', faculty: 'Dr. Pooja Agarwal' }
+      { code: '6CSE1', name: 'Design & Analysis of Algorithms', faculty: 'TBD' },
+      { code: '6CSE2', name: 'Compiler Techniques', faculty: 'TBD' },
+      { code: '6CSE3', name: 'Distributed Systems', faculty: 'TBD' },
+      { code: '6CSE4', name: 'Wireless & Mobile Networks', faculty: 'TBD' },
+      { code: '6CSE5', name: 'Software Engineering Practices', faculty: 'TBD' },
+      { code: '6CSE6', name: 'Entrepreneurship & IPR', faculty: 'TBD' }
     ],
     7: [
       { code: '7CS1', name: 'Advanced Algorithms', faculty: 'Dr. Manoj Tiwari' },
@@ -50,8 +51,11 @@ const subjectsData = {
       { code: '7CS3', name: 'Research Methodology', faculty: 'Dr. Priya Sharma' }
     ],
     8: [
-      { code: '8CS1', name: 'Major Project', faculty: 'All Faculty' },
-      { code: '8CS2', name: 'Seminar', faculty: 'All Faculty' }
+      { code: '8CSE1', name: 'Information Retrieval', faculty: 'TBD' },
+      { code: '8CSE2', name: 'Information Extraction', faculty: 'TBD' },
+      { code: '8CSE3', name: 'Network Security', faculty: 'TBD' },
+      { code: '8CSE4', name: 'Data Sciences', faculty: 'TBD' },
+      { code: '8CSE5', name: 'Soft Computing', faculty: 'TBD' }
     ]
   },
   IT: {
@@ -74,10 +78,12 @@ const subjectsData = {
       { code: '3IT4', name: 'Software Engineering', faculty: 'Dr. Pooja Agarwal' }
     ],
     4: [
-      { code: '4IT1', name: 'Web Development', faculty: 'Dr. Rajesh Kumar' },
-      { code: '4IT2', name: 'Data Structures & Algorithms', faculty: 'Dr. Manoj Tiwari' },
-      { code: '4IT3', name: 'System Programming', faculty: 'Dr. Vikram Singh' },
-      { code: '4IT4', name: 'Discrete Mathematics', faculty: 'Dr. Priya Sharma' }
+      { code: '4IT1', name: 'Applied Statistics', faculty: 'TBD' },
+      { code: '4IT2', name: 'Analysis and Design of Algorithms', faculty: 'TBD' },
+      { code: '4IT3', name: 'Database Management Systems', faculty: 'TBD' },
+      { code: '4IT4', name: 'Information Retrieval', faculty: 'TBD' },
+      { code: '4IT5', name: 'Web Technologies', faculty: 'TBD' },
+      { code: '4IT6', name: 'Introduction to Financial Literacy', faculty: 'TBD' }
     ],
     5: [
       { code: '5IT1', name: 'Artificial Intelligence', faculty: 'Dr. Neha Jain' },
@@ -86,10 +92,12 @@ const subjectsData = {
       { code: '5IT4', name: 'Computer Graphics', faculty: 'Dr. Pooja Agarwal' }
     ],
     6: [
-      { code: '6IT1', name: 'Cloud Computing', faculty: 'Dr. Rajesh Kumar' },
-      { code: '6IT2', name: 'Data Mining', faculty: 'Dr. Neha Jain' },
-      { code: '6IT3', name: 'IoT & Embedded Systems', faculty: 'Dr. Vikram Singh' },
-      { code: '6IT4', name: 'Software Testing', faculty: 'Dr. Pooja Agarwal' }
+      { code: '6IT1', name: 'Wireless Protocols & Mobile Networks', faculty: 'TBD' },
+      { code: '6IT2', name: 'Design & Analysis of Algorithms', faculty: 'TBD' },
+      { code: '6IT3', name: 'Network & Information Security', faculty: 'TBD' },
+      { code: '6IT4', name: 'Compiler Design', faculty: 'TBD' },
+      { code: '6IT5', name: 'Data Analytics', faculty: 'TBD' },
+      { code: '6IT6', name: 'Entrepreneurship & IPR', faculty: 'TBD' }
     ],
     7: [
       { code: '7IT1', name: 'Advanced Web Technologies', faculty: 'Dr. Rajesh Kumar' },
@@ -97,11 +105,13 @@ const subjectsData = {
       { code: '7IT3', name: 'Research Methodology', faculty: 'Dr. Priya Sharma' }
     ],
     8: [
-      { code: '8IT1', name: 'Major Project', faculty: 'All Faculty' },
-      { code: '8IT2', name: 'Seminar', faculty: 'All Faculty' }
+      { code: '8IT1', name: 'Data Warehousing & Mining', faculty: 'TBD' },
+      { code: '8IT2', name: 'Blockchain', faculty: 'TBD' },
+      { code: '8IT3', name: 'Human Computer Interaction', faculty: 'TBD' },
+      { code: '8IT4', name: 'Mobile Computing', faculty: 'TBD' }
     ]
   },
-  ECE: {
+  ETC: {
     1: [
       { code: '1EC1', name: 'Basic Electronics', faculty: 'Dr. Sunil Verma' },
       { code: '1EC2', name: 'Mathematics-I', faculty: 'Dr. Priya Sharma' },
@@ -121,10 +131,12 @@ const subjectsData = {
       { code: '3EC4', name: 'Control Systems', faculty: 'Dr. Manoj Tiwari' }
     ],
     4: [
-      { code: '4EC1', name: 'Digital Signal Processing', faculty: 'Dr. Sunil Verma' },
-      { code: '4EC2', name: 'VLSI Design', faculty: 'Dr. Vikram Singh' },
-      { code: '4EC3', name: 'Antenna & Wave Propagation', faculty: 'Dr. Pooja Agarwal' },
-      { code: '4EC4', name: 'Electromagnetic Theory', faculty: 'Dr. Manoj Tiwari' }
+      { code: '4ETC1', name: 'Computer Architecture & Digital Design', faculty: 'TBD' },
+      { code: '4ETC2', name: 'EMF & Transmission Lines', faculty: 'TBD' },
+      { code: '4ETC3', name: 'Analog Communication Systems', faculty: 'TBD' },
+      { code: '4ETC4', name: 'Digital Signal Processing', faculty: 'TBD' },
+      { code: '4ETC5', name: 'Linear Devices & Applications', faculty: 'TBD' },
+      { code: '4ETC6', name: 'Engineering Economics & Financial Management', faculty: 'TBD' }
     ],
     5: [
       { code: '5EC1', name: 'Wireless Communication', faculty: 'Dr. Sunil Verma' },
@@ -133,10 +145,12 @@ const subjectsData = {
       { code: '5EC4', name: 'Microwave Engineering', faculty: 'Dr. Manoj Tiwari' }
     ],
     6: [
-      { code: '6EC1', name: 'Satellite Communication', faculty: 'Dr. Sunil Verma' },
-      { code: '6EC2', name: 'Digital Image Processing', faculty: 'Dr. Vikram Singh' },
-      { code: '6EC3', name: 'Radar & Navigation', faculty: 'Dr. Pooja Agarwal' },
-      { code: '6EC4', name: 'Project Management', faculty: 'Dr. Manoj Tiwari' }
+      { code: '6ETC1', name: 'AI & Machine Learning', faculty: 'TBD' },
+      { code: '6ETC2', name: 'Mobile & Wireless Communication', faculty: 'TBD' },
+      { code: '6ETC3', name: 'SoC Design using HDL', faculty: 'TBD' },
+      { code: '6ETC4', name: 'Internet of Things', faculty: 'TBD' },
+      { code: '6ETC5', name: 'Control Systems', faculty: 'TBD' },
+      { code: '6ETC6', name: 'Entrepreneurship & IPR', faculty: 'TBD' }
     ],
     7: [
       { code: '7EC1', name: 'Advanced Communication', faculty: 'Dr. Sunil Verma' },
@@ -144,8 +158,10 @@ const subjectsData = {
       { code: '7EC3', name: 'Research Methodology', faculty: 'Dr. Priya Sharma' }
     ],
     8: [
-      { code: '8EC1', name: 'Major Project', faculty: 'All Faculty' },
-      { code: '8EC2', name: 'Seminar', faculty: 'All Faculty' }
+      { code: '8ETC1', name: 'Optical Instrumentation', faculty: 'TBD' },
+      { code: '8ETC2', name: 'Optical Communication', faculty: 'TBD' },
+      { code: '8ETC3', name: 'Telecom Networks & Navigation', faculty: 'TBD' },
+      { code: '8ETC4', name: 'Network Security', faculty: 'TBD' }
     ]
   },
   EI: {
@@ -168,10 +184,12 @@ const subjectsData = {
       { code: '3EI4', name: 'Signal Processing', faculty: 'Dr. Pooja Agarwal' }
     ],
     4: [
-      { code: '4EI1', name: 'Industrial Instrumentation', faculty: 'Dr. Sunil Verma' },
-      { code: '4EI2', name: 'Process Control', faculty: 'Dr. Manoj Tiwari' },
-      { code: '4EI3', name: 'Embedded Systems', faculty: 'Dr. Vikram Singh' },
-      { code: '4EI4', name: 'Biomedical Instrumentation', faculty: 'Dr. Pooja Agarwal' }
+      { code: '4EI1', name: 'Computer Architecture & Digital Design', faculty: 'TBD' },
+      { code: '4EI2', name: 'Sensors & Transducers', faculty: 'TBD' },
+      { code: '4EI3', name: 'Analog & Digital Communication', faculty: 'TBD' },
+      { code: '4EI4', name: 'Digital Signal Processing', faculty: 'TBD' },
+      { code: '4EI5', name: 'Linear Devices & Applications', faculty: 'TBD' },
+      { code: '4EI6', name: 'Engineering Economics & Financial Management', faculty: 'TBD' }
     ],
     5: [
       { code: '5EI1', name: 'PLC & SCADA', faculty: 'Dr. Sunil Verma' },
@@ -180,17 +198,21 @@ const subjectsData = {
       { code: '5EI4', name: 'Power Electronics', faculty: 'Dr. Pooja Agarwal' }
     ],
     6: [
-      { code: '6EI1', name: 'Advanced Control Systems', faculty: 'Dr. Manoj Tiwari' },
-      { code: '6EI2', name: 'IoT in Instrumentation', faculty: 'Dr. Vikram Singh' },
-      { code: '6EI3', name: 'Project Management', faculty: 'Dr. Pooja Agarwal' }
+      { code: '6EI1', name: 'Industrial & Power Electronics', faculty: 'TBD' },
+      { code: '6EI2', name: 'Object Oriented Programming', faculty: 'TBD' },
+      { code: '6EI3', name: 'Control Systems', faculty: 'TBD' },
+      { code: '6EI4', name: 'Mobile & Wireless Communication', faculty: 'TBD' },
+      { code: '6EI5', name: 'Database Management Systems', faculty: 'TBD' },
+      { code: '6EI6', name: 'Entrepreneurship & IPR', faculty: 'TBD' }
     ],
     7: [
       { code: '7EI1', name: 'Smart Instrumentation', faculty: 'Dr. Sunil Verma' },
       { code: '7EI2', name: 'Research Methodology', faculty: 'Dr. Priya Sharma' }
     ],
     8: [
-      { code: '8EI1', name: 'Major Project', faculty: 'All Faculty' },
-      { code: '8EI2', name: 'Seminar', faculty: 'All Faculty' }
+      { code: '8EI1', name: 'Medical & Analytical Instrumentation', faculty: 'TBD' },
+      { code: '8EI2', name: 'Intelligent Instrumentation Systems', faculty: 'TBD' },
+      { code: '8EI3', name: 'Network Security', faculty: 'TBD' }
     ]
   },
   MECH: {
@@ -213,10 +235,12 @@ const subjectsData = {
       { code: '3ME4', name: 'Machine Design', faculty: 'Dr. Vijay Singh' }
     ],
     4: [
-      { code: '4ME1', name: 'Dynamics of Machinery', faculty: 'Dr. Ramesh Gupta' },
-      { code: '4ME2', name: 'Refrigeration & Air Conditioning', faculty: 'Dr. Suresh Patel' },
-      { code: '4ME3', name: 'CAD/CAM', faculty: 'Dr. Anil Kumar' },
-      { code: '4ME4', name: 'Operations Research', faculty: 'Dr. Vijay Singh' }
+      { code: '4ME1', name: 'Industrial Engineering & Management', faculty: 'TBD' },
+      { code: '4ME2', name: 'Theory of Machines', faculty: 'TBD' },
+      { code: '4ME3', name: 'Fluid Mechanics', faculty: 'TBD' },
+      { code: '4ME4', name: 'Computer Aided Machine Design & Drawing', faculty: 'TBD' },
+      { code: '4ME5', name: 'Mechatronics', faculty: 'TBD' },
+      { code: '4ME6', name: 'Engineering Economics', faculty: 'TBD' }
     ],
     5: [
       { code: '5ME1', name: 'Automobile Engineering', faculty: 'Dr. Ramesh Gupta' },
@@ -225,17 +249,22 @@ const subjectsData = {
       { code: '5ME4', name: 'Quality Control', faculty: 'Dr. Vijay Singh' }
     ],
     6: [
-      { code: '6ME1', name: 'Robotics', faculty: 'Dr. Anil Kumar' },
-      { code: '6ME2', name: 'Finite Element Analysis', faculty: 'Dr. Vijay Singh' },
-      { code: '6ME3', name: 'Project Management', faculty: 'Dr. Ramesh Gupta' }
+      { code: '6ME1', name: 'Machine Design-II', faculty: 'TBD' },
+      { code: '6ME2', name: 'Production Engineering', faculty: 'TBD' },
+      { code: '6ME3', name: 'Fluid Machines', faculty: 'TBD' },
+      { code: '6ME4', name: 'Materials Management', faculty: 'TBD' },
+      { code: '6ME5', name: 'Electives', faculty: 'TBD' },
+      { code: '6ME6', name: 'Entrepreneurship & IPR', faculty: 'TBD' }
     ],
     7: [
       { code: '7ME1', name: 'Advanced Manufacturing', faculty: 'Dr. Anil Kumar' },
       { code: '7ME2', name: 'Research Methodology', faculty: 'Dr. Priya Sharma' }
     ],
     8: [
-      { code: '8ME1', name: 'Major Project', faculty: 'All Faculty' },
-      { code: '8ME2', name: 'Seminar', faculty: 'All Faculty' }
+      { code: '8ME1', name: 'Production & Operations Management', faculty: 'TBD' },
+      { code: '8ME2', name: 'Automobile Engineering', faculty: 'TBD' },
+      { code: '8ME3', name: 'Vibration & Noise Control', faculty: 'TBD' },
+      { code: '8ME4', name: 'Power Plant Engineering', faculty: 'TBD' }
     ]
   },
   CIVIL: {
@@ -258,10 +287,12 @@ const subjectsData = {
       { code: '3CE4', name: 'Surveying', faculty: 'Dr. Prakash Kumar' }
     ],
     4: [
-      { code: '4CE1', name: 'Steel Structures', faculty: 'Dr. Rajendra Prasad' },
-      { code: '4CE2', name: 'Highway Engineering', faculty: 'Dr. Mahesh Sharma' },
-      { code: '4CE3', name: 'Environmental Engineering', faculty: 'Dr. Sunita Jain' },
-      { code: '4CE4', name: 'Construction Management', faculty: 'Dr. Prakash Kumar' }
+      { code: '4CE1', name: 'Engineering Geology', faculty: 'TBD' },
+      { code: '4CE2', name: 'Fluid Mechanics-I', faculty: 'TBD' },
+      { code: '4CE3', name: 'Design of RCC Structures-I', faculty: 'TBD' },
+      { code: '4CE4', name: 'Environmental Engineering-I', faculty: 'TBD' },
+      { code: '4CE5', name: 'Surveying', faculty: 'TBD' },
+      { code: '4CE6', name: 'Communication Skills', faculty: 'TBD' }
     ],
     5: [
       { code: '5CE1', name: 'Earthquake Engineering', faculty: 'Dr. Rajendra Prasad' },
@@ -270,17 +301,33 @@ const subjectsData = {
       { code: '5CE4', name: 'Project Management', faculty: 'Dr. Prakash Kumar' }
     ],
     6: [
-      { code: '6CE1', name: 'Advanced Structural Design', faculty: 'Dr. Rajendra Prasad' },
-      { code: '6CE2', name: 'Traffic Engineering', faculty: 'Dr. Mahesh Sharma' },
-      { code: '6CE3', name: 'Remote Sensing', faculty: 'Dr. Sunita Jain' }
+      { code: '6CE1', name: 'Structural Analysis', faculty: 'TBD' },
+      { code: '6CE2', name: 'Transportation Engineering', faculty: 'TBD' },
+      { code: '6CE3', name: 'Design of Steel Structures', faculty: 'TBD' },
+      { code: '6CE4', name: 'Geotechnical Engineering', faculty: 'TBD' },
+      { code: '6CE5', name: 'Construction Planning & Management', faculty: 'TBD' },
+      { code: '6CE6', name: 'Entrepreneurship & IPR', faculty: 'TBD' }
     ],
     7: [
       { code: '7CE1', name: 'Bridge Engineering', faculty: 'Dr. Rajendra Prasad' },
       { code: '7CE2', name: 'Research Methodology', faculty: 'Dr. Priya Sharma' }
     ],
     8: [
-      { code: '8CE1', name: 'Major Project', faculty: 'All Faculty' },
-      { code: '8CE2', name: 'Seminar', faculty: 'All Faculty' }
+      { code: '8CE1', name: 'Hydraulic Structures & Irrigation', faculty: 'TBD' },
+      { code: '8CE2', name: 'Construction Techniques', faculty: 'TBD' },
+      { code: '8CE3', name: 'Disaster Modelling & Management', faculty: 'TBD' },
+      { code: '8CE4', name: 'Building Planning & Architecture', faculty: 'TBD' }
+    ]
+  },
+  CSBS: {
+    4: [
+      { code: '4CSBS1', name: 'Operating Systems', faculty: 'TBD' },
+      { code: '4CSBS2', name: 'Design & Analysis of Algorithms', faculty: 'TBD' },
+      { code: '4CSBS3', name: 'Software Engineering', faculty: 'TBD' },
+      { code: '4CSBS4', name: 'Operations Research', faculty: 'TBD' },
+      { code: '4CSBS5', name: 'Design Thinking', faculty: 'TBD' },
+      { code: '4CSBS6', name: 'Innovation, IP Management & Entrepreneurship', faculty: 'TBD' },
+      { code: '4CSBS7', name: 'Indian Knowledge System', faculty: 'TBD' }
     ]
   },
   BDES: {
