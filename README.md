@@ -81,7 +81,7 @@ The server will start on `http://localhost:5000` by default.
 ```javascript
 {
   title: String (required),
-  branch: String (required, enum: ['CSE', 'IT', 'ECE', 'EI', 'MECH', 'CIVIL', 'BDES']),
+  branch: String (required, enum: ['CSE', 'IT', 'ETC', 'EI', 'MECH', 'CIVIL', 'BDES']),
   semester: Number (required, 1-8),
   subject: String (required),
   fileURL: String (required),
