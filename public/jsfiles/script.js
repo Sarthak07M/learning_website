@@ -422,7 +422,7 @@ document.addEventListener('mousemove', () => {
 });
 
 // ========== CONSOLE MESSAGE ==========
-console.log('%c🚀 Quantum Nexus', 'font-size: 24px; font-weight: bold; color: #00ff88;');
+console.log('%c🚀 IET Resources', 'font-size: 24px; font-weight: bold; color: #00ff88;');
 console.log('%cBuilt with ❤️ for students', 'font-size: 14px; color: #00d4ff;');
 console.log('%cTip: Try the Konami Code! ⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️BA', 'font-size: 12px; color: #888;');
 
@@ -451,7 +451,7 @@ document.querySelectorAll('button').forEach(btn => {
 
 // ========== INITIALIZE ALL FEATURES ==========
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎉 Quantum Nexus initialized successfully!');
+    console.log('🎉 IET Resources initialized successfully!');
     
     // Restore previous selections from session storage
     const savedBranch = sessionStorage.getItem('selectedBranch');
