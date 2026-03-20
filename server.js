@@ -74,6 +74,36 @@ const startServer = () => {
     console.log('✅ Connected to MongoDB Atlas');
     console.log('Successfully connected to IET Team Cloud!');
 
+    // Migrate existing resources to set paperType when missing
+    const inferPaperType = (title = '') => {
+      const normalized = title.toLowerCase();
+      if (normalized.includes('mst') || normalized.includes('mid sem') || normalized.includes('mid-sem')) {
+        return 'mst';
+      }
+      if (normalized.includes('end sem') || normalized.includes('end-sem') || normalized.includes('final')) {
+        return 'end-sem';
+      }
+      return 'notes';
+    };
+
+    Resource.updateMany(
+      { paperType: { $exists: false } },
+      [
+        { $set: { paperType: { $cond: [
+          { $or: [
+            { $regexMatch: { input: { $toLower: '$title' }, regex: 'mst|mid\\s?sem|mid-sem' } },
+            { $regexMatch: { input: { $toLower: '$title' }, regex: 'end sem|end-sem|final' } }
+          ] },
+          { $cond: [ { $regexMatch: { input: { $toLower: '$title' }, regex: 'mst|mid\\s?sem|mid-sem' } }, 'mst', 'end-sem' ] },
+          'notes'
+        ] } } }
+      ]
+    ).then(result => {
+      console.log('✅ Migrated old resources paperType fields', result.modifiedCount);
+    }).catch(err => {
+      console.error('⚠️ Failed to migrate old resource paperType:', err.message);
+    });
+
     // Configure Multer for MEMORY storage (Files stay in RAM until sent to Cloudinary)
     const upload = multer({
       storage: multer.memoryStorage(),
@@ -185,12 +215,24 @@ const startServer = () => {
           return res.status(400).json({ success: false, message: 'No file uploaded' });
         }
 
-        const { title, branch, semester, subject } = req.body;
+        const { title, branch, semester, subject, paperType } = req.body;
 
         // Validate required fields
         if (!title || !branch || !semester || !subject) {
           return res.status(400).json({ success: false, message: 'All fields are required' });
         }
+
+        const normalizedTitle = (title || '').toLowerCase();
+        const inferredPaperType = (paperType || '').toLowerCase();
+        let resolvedPaperType = 'notes';
+        if (['mst', 'end-sem', 'endsem', 'end sem', 'end-sem'].includes(inferredPaperType)) {
+          resolvedPaperType = inferredPaperType === 'endsem' || inferredPaperType === 'end sem' ? 'end-sem' : inferredPaperType;
+        } else if (normalizedTitle.includes('mst') || normalizedTitle.includes('mid sem') || normalizedTitle.includes('mid-sem')) {
+          resolvedPaperType = 'mst';
+        } else if (normalizedTitle.includes('end sem') || normalizedTitle.includes('end-sem') || normalizedTitle.includes('final')) {
+          resolvedPaperType = 'end-sem';
+        }
+
 
         // ==========================================
         // STEP 1: Check if this resource already exists
@@ -243,6 +285,7 @@ const startServer = () => {
             existingResource.fileSize = req.file.size;
             existingResource.uploadedBy = req.body.uploadedBy || 'Admin';
             existingResource.uploadDate = Date.now(); // Reset timestamp to now
+            existingResource.paperType = resolvedPaperType;
 
             await existingResource.save();
 
@@ -260,9 +303,10 @@ const startServer = () => {
                 subject,
                 fileName: req.file.originalname,
                 fileURL: cloudinaryResult.secure_url,
-                fileType: path.extname(req.file.originalname).substring(1),
+                    fileType: path.extname(req.file.originalname).substring(1),
                 fileSize: req.file.size,
-                uploadedBy: req.body.uploadedBy || 'Admin'
+                uploadedBy: req.body.uploadedBy || 'Admin',
+                paperType: resolvedPaperType
             });
 
             await newResource.save();

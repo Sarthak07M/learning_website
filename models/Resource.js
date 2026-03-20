@@ -36,6 +36,11 @@ const resourceSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  paperType: {
+    type: String,
+    enum: ['notes', 'mst', 'end-sem'],
+    default: 'notes'
+  },
   uploadDate: {
     type: Date,
     default: Date.now
