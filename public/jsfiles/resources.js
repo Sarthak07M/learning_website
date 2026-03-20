@@ -1,4 +1,4 @@
-// ========== GET URL PARAMETERS ==========
+﻿// ========== GET URL PARAMETERS ==========
 function getUrlParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
