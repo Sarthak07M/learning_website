@@ -125,8 +125,7 @@ async function fetchResources() {
     try {
         // For production (Netlify), use: /.netlify/functions/api/resources
         // For local development, use: http://localhost:5000/api/resources
-        const apiUrl = `/.netlify/functions/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}`;
-        const response = await fetch(apiUrl);
+        const apiUrl = `http://localhost:5000/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(selectedSubject)}`;        const response = await fetch(apiUrl);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -457,9 +456,10 @@ function closeResourceModal() {
 }
 
 // ========== OPEN RESOURCE ==========
+// ========== OPEN RESOURCE ==========
 function openResource(fileURL, title) {
-    // Open the file in a new tab/window
-    window.open(`http://localhost:5000${fileURL}`, '_blank');
+    // Cloudinary provides an absolute HTTPS URL, so we can use it directly
+    window.open(fileURL, '_blank');
     console.log(`Opening resource: ${title}`);
 }
 
