@@ -99,6 +99,16 @@ const btnText = document.querySelector('.btn-text');
 const btnLoader = document.querySelector('.btn-loader');
 const uploadStatus = document.getElementById('uploadStatus');
 
+// Helper function to convert the file to a Base64 string
+const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result.split(',')[1]); // Extract base64 part
+        reader.onerror = error => reject(error);
+    });
+};
+
 uploadForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -106,22 +116,47 @@ uploadForm?.addEventListener('submit', async (e) => {
     uploadBtn.disabled = true;
     btnText.style.display = 'none';
     btnLoader.style.display = 'block';
-
-    // Hide previous status
     uploadStatus.style.display = 'none';
 
-    const formData = new FormData(uploadForm);
-
     try {
-        const response = await fetch('http://localhost:5000/api/resources', {
+        const fileInput = document.getElementById('file');
+        const file = fileInput.files[0];
+        
+        if (!file) {
+            throw new Error("Please select a file.");
+        }
+
+        // Convert file to Base64
+        const base64Data = await getBase64(file);
+
+        // Build the JSON payload
+        const payload = {
+            title: document.getElementById('title').value,
+            branch: document.getElementById('branch').value,
+            semester: document.getElementById('semester').value,
+            subject: document.getElementById('subject').value,
+            faculty: document.getElementById('faculty').value,
+            fileName: file.name,
+            mimeType: file.type,
+            fileContent: base64Data
+        };
+
+        // Replace this URL with your generated Google Apps Script Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyPC0HPN7NDMEFHRyb2LIhte-08pDvC0_36i9o3-SVHsMWIMdOt60PS3H7N7ZWf67yJ/exec';
+
+        // Note: Sending as text/plain bypasses strict CORS preflight checks in GAS
+        const response = await fetch(scriptURL, {
             method: 'POST',
-            body: formData
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8',
+            }
         });
 
         const result = await response.json();
 
-        if (response.ok && result.success) {
-            showStatus('success', 'Upload Successful!', 'Your resource has been uploaded successfully.');
+        if (result.success) {
+            showStatus('success', 'Upload Successful!', 'Your resource has been uploaded securely.');
             uploadForm.reset();
             fileName.textContent = 'No file selected';
             fileSize.textContent = '';

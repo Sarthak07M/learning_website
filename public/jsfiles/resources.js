@@ -1,4 +1,4 @@
-// ========== GET URL PARAMETERS ==========
+﻿// ========== GET URL PARAMETERS ==========
 function getUrlParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -125,8 +125,7 @@ async function fetchResources() {
     try {
         // For production (Netlify), use: /.netlify/functions/api/resources
         // For local development, use: http://localhost:5000/api/resources
-        const apiUrl = `/.netlify/functions/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}`;
-        const response = await fetch(apiUrl);
+        const apiUrl = `http://localhost:5000/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(selectedSubject)}`;        const response = await fetch(apiUrl);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -188,21 +187,12 @@ function displayResources(resources) {
         return title.includes('end sem') || title.includes('end-sem') || title.includes('end semester') || title.includes('final');
     });
 
-    const getMstResources = (mstNumber) => resources.filter(resource => {
+    const getMstResources = () => resources.filter(resource => {
         const title = getTitle(resource);
-        const hasMstKeyword = title.includes('mst') || title.includes('mid sem') || title.includes('mid-sem');
-        if (!hasMstKeyword) {
-            return false;
-        }
-
-        const mstPattern = new RegExp(`(mst|mid\\s?sem|mid-sem)[\\s-]*${mstNumber}\\b`);
-        return mstPattern.test(title);
+        return title.includes('mst') || title.includes('mid sem') || title.includes('mid-sem');
     });
 
-    const mst1Resources = getMstResources(1);
-    const mst2Resources = getMstResources(2);
-    const mst3Resources = getMstResources(3);
-    const allMstResources = [...mst1Resources, ...mst2Resources, ...mst3Resources];
+    const allMstResources = getMstResources();
 
     resourcesGrid.innerHTML = `
         <div class="resource-card" data-category="notes">
@@ -215,11 +205,9 @@ function displayResources(resources) {
         <div class="resource-card pyq-card" data-category="mst">
             <div class="resource-icon">📝</div>
             <h3 class="resource-title">MST Papers</h3>
-            <p class="resource-description">Select MST 1, MST 2, or MST 3 papers</p>
+            <p class="resource-description">Select MST papers</p>
             <div class="pyq-sections mst-sections">
-                <button class="resource-btn pyq-btn" data-type="mst-1">MST 1</button>
-                <button class="resource-btn pyq-btn" data-type="mst-2">MST 2</button>
-                <button class="resource-btn pyq-btn" data-type="mst-3">MST 3</button>
+                <button class="resource-btn pyq-btn" data-type="mst">MST</button>
             </div>
         </div>
 
@@ -269,12 +257,8 @@ function displayResources(resources) {
             createRipple(btn, e);
 
             const type = btn.getAttribute('data-type');
-            if (type === 'mst-1') {
-                showResourceModal(mst1Resources, 'MST 1 Papers');
-            } else if (type === 'mst-2') {
-                showResourceModal(mst2Resources, 'MST 2 Papers');
-            } else if (type === 'mst-3') {
-                showResourceModal(mst3Resources, 'MST 3 Papers');
+            if (type === 'mst') {
+                showResourceModal(allMstResources, 'MST Papers');
             }
         });
     });
@@ -457,9 +441,10 @@ function closeResourceModal() {
 }
 
 // ========== OPEN RESOURCE ==========
+// ========== OPEN RESOURCE ==========
 function openResource(fileURL, title) {
-    // Open the file in a new tab/window
-    window.open(`http://localhost:5000${fileURL}`, '_blank');
+    // Cloudinary provides an absolute HTTPS URL, so we can use it directly
+    window.open(fileURL, '_blank');
     console.log(`Opening resource: ${title}`);
 }
 

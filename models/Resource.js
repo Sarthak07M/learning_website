@@ -9,7 +9,7 @@ const resourceSchema = new mongoose.Schema({
   branch: {
     type: String,
     required: true,
-    enum: ['CSE', 'IT', 'ECE', 'EI', 'MECH', 'CIVIL', 'BDES']
+    enum: ['CSE', 'IT', 'ETC', 'EI', 'MECH', 'CIVIL', 'BDES','CSBS']
   },
   semester: {
     type: Number,
@@ -35,6 +35,11 @@ const resourceSchema = new mongoose.Schema({
   uploadedBy: {
     type: String,
     trim: true
+  },
+  paperType: {
+    type: String,
+    enum: ['notes', 'mst', 'end-sem'],
+    default: 'notes'
   },
   uploadDate: {
     type: Date,
