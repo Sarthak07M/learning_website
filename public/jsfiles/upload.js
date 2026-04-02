@@ -47,6 +47,11 @@ const semesterSelect = document.getElementById('semester');
 const subjectSelect = document.getElementById('subject');
 const facultyInput = document.getElementById('faculty');
 
+const API_BASE_URL =
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000'
+        : 'https://your-render-backend-url.onrender.com';
+
 // Function to populate subjects based on branch and semester
 async function populateSubjects() {
     const branch = branchSelect.value;
@@ -59,7 +64,7 @@ async function populateSubjects() {
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/api/subjects?branch=${encodeURIComponent(branch)}&semester=${encodeURIComponent(semester)}`);
+        const response = await fetch(`${API_BASE_URL}/api/subjects?branch=${encodeURIComponent(branch)}&semester=${encodeURIComponent(semester)}`);
         const result = await response.json();
 
         if (response.ok && result.success) {

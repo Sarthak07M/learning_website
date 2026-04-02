@@ -12,6 +12,11 @@ let selectedSemester = getUrlParameter('semester');
 let selectedSubject = getUrlParameter('subject');
 let selectedSubjectCode = getUrlParameter('code');
 
+const API_BASE_URL =
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000'
+        : 'https://your-render-backend-url.onrender.com';
+
 // Fallback: parse from pathname like /branch/sem{number}/subject when query params are not provided
 if (!selectedBranch || !selectedSemester || !selectedSubject) {
     const parts = window.location.pathname.split('/').filter(Boolean);
@@ -123,9 +128,8 @@ async function fetchResources() {
     }
 
     try {
-        // For production (Netlify), use: /.netlify/functions/api/resources
-        // For local development, use: http://localhost:5000/api/resources
-        const apiUrl = `http://localhost:5000/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(selectedSubject)}`;        const response = await fetch(apiUrl);
+        const apiUrl = `${API_BASE_URL}/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(selectedSubject)}`;
+        const response = await fetch(apiUrl);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
