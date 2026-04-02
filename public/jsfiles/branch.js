@@ -17,6 +17,13 @@ hamburger?.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger?.classList.remove('active');
+        navMenu?.classList.remove('active');
+    });
+});
+
 // ========== BRANCH CARD INTERACTIONS ==========
 const branchCards = document.querySelectorAll('.branch-card');
 

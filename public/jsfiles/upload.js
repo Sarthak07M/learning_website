@@ -17,6 +17,13 @@ hamburger?.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger?.classList.remove('active');
+        navMenu?.classList.remove('active');
+    });
+});
+
 // ========== FILE INPUT HANDLING ==========
 const fileInput = document.getElementById('file');
 const fileName = document.getElementById('fileName');
@@ -50,7 +57,7 @@ const facultyInput = document.getElementById('faculty');
 const API_BASE_URL =
     window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:5000'
-        : 'https://your-render-backend-url.onrender.com';
+        : window.location.origin;
 
 // Function to populate subjects based on branch and semester
 async function populateSubjects() {
