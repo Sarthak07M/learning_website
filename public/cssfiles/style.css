@@ -1461,3 +1461,215 @@ body {
         font-size: 4rem;
     }
 }
+
+/* ========== CONTENT PAGES ========== */
+.content-page {
+    background:
+        radial-gradient(circle at top left, rgba(0, 255, 136, 0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(0, 212, 255, 0.10), transparent 24%),
+        var(--dark-bg);
+}
+
+.content-page main {
+    position: relative;
+    z-index: 1;
+    padding-top: 92px;
+}
+
+.page-hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4.5rem 2rem 2rem;
+}
+
+.page-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: rgba(0, 255, 136, 0.12);
+    color: var(--primary-green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.page-title {
+    margin-top: 1.2rem;
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+}
+
+.page-subtitle {
+    max-width: 760px;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.content-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem 5rem;
+}
+
+.page-section {
+    margin-top: 2rem;
+    padding: 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    background: rgba(21, 21, 21, 0.72);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+}
+
+.section-kicker {
+    color: var(--primary-cyan);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.section-title {
+    margin-top: 0.4rem;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+}
+
+.section-copy {
+    margin-top: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.info-grid,
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.info-card,
+.contact-card,
+.policy-card {
+    padding: 1.4rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 10, 10, 0.52);
+}
+
+.info-card h3,
+.contact-card h3,
+.policy-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.65rem;
+}
+
+.info-card p,
+.contact-card p,
+.policy-card p,
+.content-list li {
+    color: var(--text-secondary);
+}
+
+.content-list {
+    margin-top: 1rem;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.content-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.4rem;
+}
+
+.content-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.04);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.content-link:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 255, 136, 0.4);
+    background: rgba(0, 255, 136, 0.08);
+}
+
+.contact-card .contact-meta {
+    margin-top: 0.9rem;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.contact-card a {
+    color: var(--primary-cyan);
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+.content-highlight {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border-left: 3px solid var(--primary-green);
+    border-radius: 14px;
+    background: rgba(0, 255, 136, 0.06);
+    color: var(--text-secondary);
+}
+
+.policy-card ul {
+    margin-top: 0.75rem;
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+    .info-grid,
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero,
+    .content-shell {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .info-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-section {
+        padding: 1.2rem;
+        border-radius: 18px;
+    }
+
+    .content-actions {
+        flex-direction: column;
+    }
+
+    .content-link {
+        width: 100%;
+    }
+}
