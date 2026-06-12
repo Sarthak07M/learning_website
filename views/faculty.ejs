@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-adsense-account" content="ca-pub-6731641895607660">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6731641895607660" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IET Resources - Select Subject</title>
+    <meta name="description" content="Select a subject to access notes, resources, and academic support for your branch and semester.">
+    <meta name="keywords" content="subjects, notes, study materials, engineering subjects, semester resources">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>IET Resources | Select Subject</title>
     <link rel="stylesheet" href="/cssfiles/faculty.css">
 </head>
 <body>
@@ -25,6 +31,9 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="/htmlfiles/index.html" class="nav-link">Home</a></li>
+                <li><a href="/htmlfiles/about.html" class="nav-link">About Us</a></li>
+                <li><a href="/htmlfiles/contact.html" class="nav-link">Contact Us</a></li>
+                <li><a href="/htmlfiles/privacy.html" class="nav-link">Privacy Policy</a></li>
                 <li><a href="/htmlfiles/team.html" class="nav-link">Team</a></li>
                 <li><a href="/htmlfiles/branch.html" class="nav-link">Branches</a></li>
                 <li><a href="/htmlfiles/faculty.html" class="nav-link active">Subjects</a></li>
@@ -47,6 +56,9 @@
                 <span id="selected-branch"><%= branch || 'Select a branch' %></span> • 
                 <span id="selected-semester"><% if (semester) { %>Semester <%= semester %><% } else { %>Select a semester<% } %></span>
             </p>
+            <div class="content-highlight" style="max-width: 860px; margin: 1rem auto 0;">
+                Pick a subject to see the exact resource set for revision, exam practice, and semester planning.
+            </div>
         </div>
 
         <div class="subjects-grid">
@@ -78,13 +90,16 @@
                 <span>IET Resources</span>
             </div>
             <div class="footer-links">
+                <a href="/htmlfiles/about.html">About Us</a>
+                <a href="/htmlfiles/contact.html">Contact Us</a>
+                <a href="/htmlfiles/privacy.html">Privacy Policy</a>
                 <a href="#team">Team</a>
                 <a href="/htmlfiles/branch.html">Branches</a>
                 <a href="/htmlfiles/faculty.html">Subjects</a>
                 <a href="#contribute">Contribute</a>
             </div>
             <div class="footer-social">
-                <p>&copy; 2026 IET Resources. All resources for educational purposes.</p>
+                <p>&copy; 2026 IET Resources. Subject-wise resources for exam revision.</p>
             </div>
         </div>
     </footer>

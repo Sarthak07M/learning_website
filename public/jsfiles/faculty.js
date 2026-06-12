@@ -44,6 +44,13 @@ hamburger?.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger?.classList.remove('active');
+        navMenu?.classList.remove('active');
+    });
+});
+
 // ========== UPDATE SELECTED INFO ==========
 function updateSelectedInfo() {
     const branchDisplay = document.getElementById('selected-branch');
