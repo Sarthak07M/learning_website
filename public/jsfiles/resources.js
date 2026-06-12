@@ -12,6 +12,11 @@ let selectedSemester = getUrlParameter('semester');
 let selectedSubject = getUrlParameter('subject');
 let selectedSubjectCode = getUrlParameter('code');
 
+const API_BASE_URL =
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000'
+    : window.location.origin;
+
 // Fallback: parse from pathname like /branch/sem{number}/subject when query params are not provided
 if (!selectedBranch || !selectedSemester || !selectedSubject) {
     const parts = window.location.pathname.split('/').filter(Boolean);
@@ -44,6 +49,13 @@ const navMenu = document.querySelector('.nav-menu');
 hamburger?.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger?.classList.remove('active');
+        navMenu?.classList.remove('active');
+    });
 });
 
 // ========== DISPLAY SELECTED INFO ==========
@@ -123,9 +135,8 @@ async function fetchResources() {
     }
 
     try {
-        // For production (Netlify), use: /.netlify/functions/api/resources
-        // For local development, use: http://localhost:5000/api/resources
-        const apiUrl = `http://localhost:5000/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(selectedSubject)}`;        const response = await fetch(apiUrl);
+        const apiUrl = `${API_BASE_URL}/api/resources?branch=${encodeURIComponent(selectedBranch)}&semester=${encodeURIComponent(selectedSemester)}&subject=${encodeURIComponent(selectedSubject)}`;
+        const response = await fetch(apiUrl);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -138,17 +149,22 @@ async function fetchResources() {
             displayResources(allResources);
         } else {
             console.error('API returned error:', data.message);
-            // Use mock data for testing
-            console.log('Using mock data for testing...');
-            allResources = getMockResources();
-            displayResources(allResources);
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                // Local-only fallback while developing offline
+                allResources = getMockResources();
+                displayResources(allResources);
+            } else {
+                showErrorMessage(data.message || 'Unable to load resources right now.');
+            }
         }
     } catch (error) {
         console.error('Error fetching resources:', error);
-        // Use mock data when API is not available
-        console.log('API not available, using mock data for testing...');
-        allResources = getMockResources();
-        displayResources(allResources);
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            allResources = getMockResources();
+            displayResources(allResources);
+        } else {
+            showErrorMessage('Unable to fetch resources. Please try again in a moment.');
+        }
     }
 }
 
@@ -176,20 +192,24 @@ function displayResources(resources) {
     }
 
     const getTitle = (resource) => (resource.title || '').toLowerCase();
+    const getPaperType = (resource) => (resource.paperType || '').toLowerCase();
 
     const notesResources = resources.filter(resource => {
         const title = getTitle(resource);
-        return title.includes('note') || title.includes('notes') || title.includes('lecture');
+        const paperType = getPaperType(resource);
+        return paperType === 'notes' || title.includes('note') || title.includes('notes') || title.includes('lecture');
     });
 
     const endSemResources = resources.filter(resource => {
         const title = getTitle(resource);
-        return title.includes('end sem') || title.includes('end-sem') || title.includes('end semester') || title.includes('final');
+        const paperType = getPaperType(resource);
+        return paperType === 'end-sem' || title.includes('end sem') || title.includes('end-sem') || title.includes('end semester') || title.includes('final');
     });
 
     const getMstResources = () => resources.filter(resource => {
         const title = getTitle(resource);
-        return title.includes('mst') || title.includes('mid sem') || title.includes('mid-sem');
+        const paperType = getPaperType(resource);
+        return paperType === 'mst' || title.includes('mst') || title.includes('mid sem') || title.includes('mid-sem');
     });
 
     const allMstResources = getMstResources();

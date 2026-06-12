@@ -37,6 +37,13 @@ hamburger?.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger?.classList.remove('active');
+        navMenu?.classList.remove('active');
+    });
+});
+
 // ========== DISPLAY SELECTED BRANCH ==========
 function displaySelectedBranch() {
     const branchDisplay = document.getElementById('selected-branch');

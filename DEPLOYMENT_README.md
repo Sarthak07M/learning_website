@@ -1,89 +1,57 @@
-# Cara Menyambung Database Melalui Netlify
+# Deployment Guide (Vercel Frontend + Render Backend)
 
-## Langkah-langkah Deployment
+## Target Architecture
+- Frontend: static files from `public/` deployed on Vercel
+- Backend: normal Node.js + Express + MongoDB app deployed on Render
 
-### 1. Persiapan Database
-- Buat akun di [MongoDB Atlas](https://www.mongodb.com/atlas)
-- Buat cluster baru dan dapatkan connection string
-- Pastikan IP whitelist sudah dikonfigurasi (0.0.0.0/0 untuk development)
-
-### 2. Konfigurasi Environment Variables di Netlify
-1. Login ke [Netlify Dashboard](https://app.netlify.com)
-2. Pilih project Anda
-3. Pergi ke **Site settings** > **Environment variables**
-4. Tambahkan variable berikut:
-   - `MONGODB_URI`: Connection string MongoDB Atlas Anda
-   - `NODE_ENV`: `production`
-
-### 3. Deploy ke Netlify
-1. Push kode ke Git repository (GitHub/GitLab)
-2. Connect repository ke Netlify
-3. Set build settings:
-   - **Build command**: (kosong atau `npm run build` jika ada)
-   - **Publish directory**: `Frontend`
-   - **Functions directory**: `netlify/functions`
-
-### 4. File Upload Handling
-Karena Netlify Functions tidak mendukung multipart/form-data secara langsung, untuk upload file:
-
-**Opsi 1: Gunakan Cloudinary atau AWS S3**
-- Upload file ke cloud storage terlebih dahulu
-- Simpan URL file di database
-
-**Opsi 2: Gunakan API Gateway**
-- Buat endpoint terpisah untuk upload file
-- Gunakan service seperti Vercel atau Railway untuk backend
-
-### 5. Testing
-Setelah deploy:
-1. Akses situs Netlify Anda
-2. Test navigasi: branch → semester → faculty → resources
-3. Cek koneksi database melalui browser console
-
-## Struktur File yang Dibutuhkan
-
+## Local Development
+1. Install dependencies:
+```bash
+npm install
 ```
-project/
-├── Frontend/           # Static files
-│   ├── index.html
-│   ├── branch.html
-│   ├── semester.html
-│   ├── faculty.html
-│   ├── resources.html
-│   ├── *.css
-│   └── *.js
-├── netlify/
-│   └── functions/
-│       └── api.js      # Serverless function
-├── models/
-│   └── Resource.js     # Mongoose model
-├── netlify.toml        # Netlify config
-└── package.json
+2. Create `.env` (backend):
+```env
+MONGODB_URI=your_mongodb_connection_string
+PORT=5000
+```
+3. Run locally:
+```bash
+npm run dev
 ```
 
-## Troubleshooting
+## Frontend Deployment (Vercel)
+1. In Vercel, import this repo.
+2. Set framework preset to `Other`.
+3. Set output directory to `public`.
+4. Deploy.
 
-### Error: "MongoDB connection error"
-- Pastikan MONGODB_URI sudah benar
-- Cek whitelist IP di MongoDB Atlas
-- Pastikan database user memiliki permission yang cukup
+### Frontend Entry
+- `public/index.html` exists at the root and redirects to `public/htmlfiles/index.html`.
 
-### Error: "Function not found"
-- Pastikan file `netlify/functions/api.js` ada
-- Cek build logs di Netlify dashboard
+## Backend Deployment (Render)
+1. Create a new Web Service on Render from this repository.
+2. Set build command:
+```bash
+npm install
+```
+3. Set start command:
+```bash
+npm start
+```
+4. Add environment variables in Render:
+- `MONGODB_URI`
+- `PORT` (optional; Render provides one automatically)
+- Any Cloudinary variables used by backend
 
-### CORS Error
-- Netlify functions sudah dikonfigurasi dengan CORS headers
-- Jika masih error, cek `netlify.toml` configuration
+## Frontend API Base URL
+Current frontend scripts use:
+- `http://localhost:5000` when running locally
+- `https://your-render-backend-url.onrender.com` for non-localhost
 
-## Development vs Production
+Update this placeholder in these files after backend deployment:
+- `public/jsfiles/resources.js`
+- `public/jsfiles/upload.js`
 
-### Development (Local)
-- Server berjalan di `http://localhost:5000`
-- API endpoint: `http://localhost:5000/api/*`
-
-### Production (Netlify)
-- Frontend di-host di Netlify
-- API endpoint: `/.netlify/functions/api/*`
-
-Frontend code sudah dikonfigurasi untuk mendeteksi environment secara otomatis.
+## Notes
+- Backend files (`server.js`, `routes/`, `models/`) remain CommonJS and unchanged in architecture.
+- Netlify serverless files/configs were removed to avoid mixed deployment setups.

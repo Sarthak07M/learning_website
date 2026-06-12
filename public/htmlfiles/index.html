@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-adsense-account" content="ca-pub-6731641895607660">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6731641895607660" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IET Resources - Your Ultimate Academic Resource</title>
+    <meta name="description" content="IET Resources helps engineering students find branch-wise study material, notes, papers, and placement preparation support in one place.">
+    <meta name="keywords" content="IET Resources, study materials, engineering notes, placement preparation, branch wise resources, exam papers">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>IET Resources | Study Material and Placement Support</title>
     <link rel="stylesheet" href="/cssfiles/style.css">
 </head>
 <body>
@@ -25,9 +31,11 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="/htmlfiles/about.html" class="nav-link">About Us</a></li>
+                <li><a href="/htmlfiles/contact.html" class="nav-link">Contact Us</a></li>
+                <li><a href="/htmlfiles/privacy.html" class="nav-link">Privacy Policy</a></li>
                 <li><a href="/htmlfiles/team.html" class="nav-link">Team</a></li>
                 <li><a href="#branches" class="nav-link">Branches</a></li>
-                <!-- <li><a href="#subjects" class="nav-link">Subjects</a></li> -->
             </ul>
             <div class="nav-actions">
                 <button class="btn-signin" onclick="openLoginModal()">Sign in</button>
@@ -49,16 +57,15 @@
                     <span>Introducing IET Resources</span>
                 </div>
                 <h1 class="hero-title">
-                    Smart collection of 
+                    Smart collection of
                     <br>
-                    <span class="gradient-text">your resources</span>
+                    <span class="gradient-text">study resources</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Everything you need to study, in one place
+                    Branch-wise notes, papers, and study support for engineering students
                     <br>
-                    Study anytime with AI
+                    Designed for focused revision and placement preparation
                 </p>
-                
             </div>
             <div class="hero-visual">
                 <div class="orb-container">
@@ -90,6 +97,26 @@
         </div>
     </section>
 
+    <section class="page-section" id="about-platform" style="max-width: 1200px; margin: 2rem auto 0;">
+        <p class="section-kicker">About the platform</p>
+        <h2 class="section-title">A simple, student-first learning portal</h2>
+        <p class="section-copy">IET Resources is organized to help students move quickly from branch selection to semester study material without distractions. The focus is on useful academic content, clear navigation, and preparation support that stays practical.</p>
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>Study by branch</h3>
+                <p>Choose your branch to reach the correct semester path and subject resources.</p>
+            </article>
+            <article class="info-card">
+                <h3>Prepare for placements</h3>
+                <p>Use the site to support coding practice, revision, and interview readiness.</p>
+            </article>
+            <article class="info-card">
+                <h3>Stay organized</h3>
+                <p>Notes, papers, and uploads are presented in a clean layout so students can find what they need faster.</p>
+            </article>
+        </div>
+    </section>
+
     <!-- Branch Selection -->
     <section id="branches" class="arena">
         <div class="arena-header">
@@ -105,7 +132,6 @@
                 Master your academics with PYQs, notes, and more — all in one place
             </p>
         </div>
-
         <div class="branch-selection">
             <div class="branch-card" data-branch="CSE" onclick="navigateToSemester(this.dataset.branch)">
                 <span class="branch-code">CSE</span>
@@ -150,8 +176,6 @@
         </div>
     </section>
 
-
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -159,33 +183,463 @@
                 <span>IET Resources</span>
             </div>
             <div class="footer-links">
-                <a href="#team">Team</a>
-                <a href="#branches">Branches</a>
-                <a href="#subjects">Subjects</a>
-                <a href="#contribute">Contribute</a>
+                <a href="/htmlfiles/about.html">About Us</a>
+                <a href="/htmlfiles/contact.html">Contact Us</a>
+                <a href="/htmlfiles/privacy.html">Privacy Policy</a>
+                <a href="/htmlfiles/team.html">Team</a>
+                <a href="/htmlfiles/branch.html">Branches</a>
+                <a href="/htmlfiles/branch.html">Subjects</a>
+                <a href="/htmlfiles/upload.html">Contribute</a>
             </div>
             <div class="footer-social">
-                <p>&copy; 2026 IET Resources. All resources for educational purposes.</p>
+                <p>&copy; 2026 IET Resources. Educational content for exam revision and placement preparation.</p>
+                <p>Contact us: <a href="mailto:StudyPortalDev@gmail.com">StudyPortalDev@gmail.com</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- ======================================================
+         IET STUDY AI — CHAT WIDGET
+    ====================================================== -->
+
+    <!-- FAB -->
+    <button class="iet-fab" id="ietFab" onclick="ietToggleChat()" title="Chat with IET Study AI">
+        <div class="iet-fab-badge" id="ietBadge">1</div>
+        <svg class="iet-fab-icon-chat" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.65 1.17 5.03 3.04 6.71L4 22l4.55-1.52A10.07 10.07 0 0012 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 14H7v-2h6v2zm3-4H7v-2h9v2zm0-4H7V6h9v2z"/></svg>
+        <svg class="iet-fab-icon-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="iet-chat-window iet-hidden" id="ietChatWindow">
+
+        <!-- Header -->
+        <div class="iet-chat-header">
+            <div class="iet-chat-avatar">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.65 1.17 5.03 3.04 6.71L4 22l4.55-1.52A10.07 10.07 0 0012 20c5.52 0 10-4.02 10-9S17.52 2 12 2z"/></svg>
+                <div class="iet-online-dot"></div>
+            </div>
+            <div class="iet-chat-info">
+                <div class="iet-chat-name">IET Study AI</div>
+                <div class="iet-chat-status">● Online · Ready to help</div>
+            </div>
+            <div class="iet-chat-controls">
+                <button class="iet-ctrl-btn" id="ietMinBtn" onclick="ietMinimize()" title="Minimize">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor"><rect y="5" width="12" height="2" rx="1"/></svg>
+                </button>
+                <button class="iet-ctrl-btn" id="ietMaxBtn" onclick="ietMaximize()" title="Maximize">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="10" height="10" rx="1.5"/></svg>
+                </button>
+                <button class="iet-ctrl-btn iet-close-btn" onclick="ietToggleChat()" title="Close">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l10 10M11 1L1 11"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="iet-chat-body" id="ietChatBody">
+            <div class="iet-msg-row iet-bot">
+                <div class="iet-msg-avatar">AI</div>
+                <div>
+                    <div class="iet-bubble">👋 Hi! I'm your IET Resources AI assistant.<br>Ask me anything — PYQs, notes, subjects, or branches. I'm here to help you study smarter! 🎓</div>
+                    <span class="iet-bubble-time">Just now</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestion Chips -->
+        <div class="iet-chip-row" id="ietChipRow">
+            <div class="iet-chip" onclick="ietSendChip(this)">📚 Notes for CSE</div>
+            <div class="iet-chip" onclick="ietSendChip(this)">📝 PYQs for ECE</div>
+            <div class="iet-chip" onclick="ietSendChip(this)">🔀 All branches</div>
+        </div>
+
+        <!-- Input Footer -->
+        <div class="iet-chat-footer">
+            <div class="iet-input-row">
+                <textarea class="iet-chat-input" id="ietChatInput"
+                    placeholder="Ask about notes, PYQs, subjects…"
+                    rows="1"
+                    onkeydown="ietHandleKey(event)"
+                    oninput="ietAutoResize(this)"></textarea>
+                <button class="iet-send-btn" id="ietSendBtn" onclick="ietSendMessage()">
+                    <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+            <div class="iet-footer-note">Powered by <span>IET Resources AI</span></div>
+        </div>
+    </div>
+
+    <!-- Chat Styles -->
+    <style>
+        /* ── FAB ── */
+        .iet-fab {
+            position: fixed; bottom: 28px; right: 28px;
+            width: 58px; height: 58px; border-radius: 50%;
+            background: linear-gradient(135deg, #00e5a0, #00c2ff);
+            border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 32px rgba(0,229,160,0.4);
+            animation: ietFabPulse 2.5s ease-in-out infinite;
+            transition: transform 0.2s ease;
+            z-index: 99999;
+        }
+        .iet-fab:hover { transform: scale(1.08); }
+        .iet-fab svg { width: 24px; height: 24px; fill: #0a0f0a; position: absolute; transition: opacity 0.25s, transform 0.25s; }
+        .iet-fab-icon-close { opacity: 0; transform: rotate(-90deg); }
+        .iet-fab.iet-open .iet-fab-icon-chat { opacity: 0; transform: rotate(90deg); }
+        .iet-fab.iet-open .iet-fab-icon-close { opacity: 1; transform: rotate(0deg); }
+        .iet-fab-badge {
+            position: absolute; top: -2px; right: -2px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: #ff4d6d; color: #fff;
+            font-size: 10px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid #0a0f0a;
+            animation: ietBadgePop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes ietFabPulse {
+            0%,100% { box-shadow: 0 0 0 0 rgba(0,229,160,0.4), 0 8px 32px rgba(0,229,160,0.3); }
+            50%      { box-shadow: 0 0 0 12px rgba(0,229,160,0), 0 8px 32px rgba(0,229,160,0.3); }
+        }
+        @keyframes ietBadgePop {
+            from { transform: scale(0); } to { transform: scale(1); }
+        }
+
+        /* ── WINDOW ── */
+        .iet-chat-window {
+            position: fixed;
+            bottom: 100px; right: 28px;
+            width: 360px;
+            height: min(540px, calc(100dvh - 130px));
+            background: #111611;
+            border: 1px solid #1e2a1e;
+            border-radius: 20px;
+            display: flex; flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.65), 0 0 0 1px rgba(0,229,160,0.1);
+            transform-origin: bottom right;
+            transition: width 0.3s ease, height 0.3s ease, bottom 0.3s ease, right 0.3s ease, border-radius 0.3s ease;
+            z-index: 99998;
+            animation: ietWindowIn 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards;
+        }
+        .iet-hidden { display: none !important; }
+        .iet-chat-window.iet-minimized { height: 64px !important; overflow: hidden; }
+        .iet-chat-window.iet-maximized {
+            width: calc(100vw - 40px) !important;
+            height: calc(100dvh - 40px) !important;
+            bottom: 20px !important; right: 20px !important;
+            border-radius: 24px !important;
+        }
+        @keyframes ietWindowIn {
+            from { opacity: 0; transform: scale(0.88) translateY(16px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* ── HEADER ── */
+        .iet-chat-header {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 14px;
+            background: #161d16;
+            border-bottom: 1px solid #1e2a1e;
+            flex-shrink: 0; min-height: 64px;
+        }
+        .iet-chat-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, #00e5a0, #00c2ff);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; position: relative;
+        }
+        .iet-chat-avatar svg { width: 18px; height: 18px; fill: #0a0f0a; }
+        .iet-online-dot {
+            position: absolute; bottom: 1px; right: 1px;
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #00e5a0; border: 2px solid #161d16;
+            animation: ietBlink 2s ease-in-out infinite;
+        }
+        @keyframes ietBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .iet-chat-info { flex: 1; min-width: 0; }
+        .iet-chat-name { font-size: 14px; font-weight: 700; color: #e8f0e8; line-height: 1; }
+        .iet-chat-status { font-size: 11px; color: #00e5a0; margin-top: 3px; }
+        .iet-chat-controls { display: flex; gap: 5px; flex-shrink: 0; }
+        .iet-ctrl-btn {
+            width: 28px; height: 28px; border-radius: 7px;
+            border: 1px solid #1e2a1e; background: transparent;
+            color: #6b7f6b; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.15s ease; padding: 0;
+        }
+        .iet-ctrl-btn:hover { background: #1e2a1e; color: #e8f0e8; }
+        .iet-close-btn:hover { background: rgba(255,77,109,0.15) !important; color: #ff4d6d !important; border-color: #ff4d6d !important; }
+
+        /* ── MESSAGES ── */
+        .iet-chat-body {
+            flex: 1; overflow-y: auto; padding: 14px;
+            background: #0d130d;
+            display: flex; flex-direction: column; gap: 12px;
+            scroll-behavior: smooth;
+        }
+        .iet-chat-body::-webkit-scrollbar { width: 4px; }
+        .iet-chat-body::-webkit-scrollbar-thumb { background: #1e2a1e; border-radius: 4px; }
+        .iet-msg-row { display: flex; gap: 8px; align-items: flex-end; animation: ietMsgIn 0.25s ease; }
+        .iet-msg-row.iet-user { flex-direction: row-reverse; }
+        @keyframes ietMsgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+        .iet-msg-avatar {
+            width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+            background: linear-gradient(135deg, #00e5a0, #00c2ff);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 700; color: #0a0f0a;
+        }
+        .iet-msg-row.iet-user .iet-msg-avatar {
+            background: linear-gradient(135deg, #1e2a1e, #2a3a2a);
+            color: #00e5a0;
+        }
+        .iet-bubble {
+            max-width: 78%; padding: 10px 13px; border-radius: 15px;
+            font-size: 13.5px; line-height: 1.55;
+        }
+        .iet-msg-row.iet-bot .iet-bubble {
+            background: #131a13; border: 1px solid #1e2a1e;
+            border-bottom-left-radius: 4px; color: #e8f0e8;
+        }
+        .iet-msg-row.iet-user .iet-bubble {
+            background: #0f2a1e; border: 1px solid rgba(0,229,160,0.2);
+            border-bottom-right-radius: 4px; color: #e8f0e8;
+        }
+        .iet-bubble-time { font-size: 10px; color: #6b7f6b; margin-top: 4px; display: block; }
+        .iet-msg-row.iet-user .iet-bubble-time { text-align: right; }
+
+        /* ── TYPING ── */
+        .iet-typing-row { display: flex; gap: 8px; align-items: flex-end; }
+        .iet-typing-bubble {
+            background: #131a13; border: 1px solid #1e2a1e;
+            border-radius: 15px; border-bottom-left-radius: 4px;
+            padding: 12px 15px; display: flex; gap: 5px; align-items: center;
+        }
+        .iet-dot { width: 7px; height: 7px; border-radius: 50%; background: #6b7f6b; }
+        .iet-dot:nth-child(1){animation:ietDot 1.2s 0s infinite}
+        .iet-dot:nth-child(2){animation:ietDot 1.2s .2s infinite}
+        .iet-dot:nth-child(3){animation:ietDot 1.2s .4s infinite}
+        @keyframes ietDot { 0%,80%,100%{transform:translateY(0);opacity:.4} 40%{transform:translateY(-6px);opacity:1} }
+
+        /* ── CHIPS ── */
+        .iet-chip-row {
+            display: flex; gap: 7px; padding: 10px 13px;
+            background: #0d130d; border-top: 1px solid #1e2a1e;
+            overflow-x: auto; flex-wrap: nowrap; flex-shrink: 0;
+            scrollbar-width: none;
+        }
+        .iet-chip-row::-webkit-scrollbar { display: none; }
+        .iet-chip {
+            padding: 6px 13px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+            border: 1px solid rgba(0,229,160,0.3); background: rgba(0,229,160,0.06);
+            color: #00e5a0; font-size: 12px; font-weight: 500; cursor: pointer;
+            transition: all 0.15s;
+        }
+        .iet-chip:hover { background: rgba(0,229,160,0.15); border-color: #00e5a0; transform: translateY(-1px); }
+
+        /* ── FOOTER / INPUT ── */
+        .iet-chat-footer { padding: 10px 12px; background: #161d16; border-top: 1px solid #1e2a1e; flex-shrink: 0; }
+        .iet-input-row { display: flex; gap: 8px; align-items: flex-end; }
+        .iet-chat-input {
+            flex: 1; background: #111611; border: 1px solid #1e2a1e;
+            border-radius: 12px; padding: 10px 13px;
+            color: #e8f0e8; font-family: inherit; font-size: 13.5px;
+            resize: none; min-height: 42px; max-height: 100px;
+            outline: none; transition: border-color 0.2s; line-height: 1.4;
+        }
+        .iet-chat-input::placeholder { color: #6b7f6b; }
+        .iet-chat-input:focus { border-color: rgba(0,229,160,0.45); }
+        .iet-send-btn {
+            width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+            background: linear-gradient(135deg, #00e5a0, #00c2ff);
+            border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.15s, opacity 0.15s;
+        }
+        .iet-send-btn:hover { transform: scale(1.05); }
+        .iet-send-btn:active { transform: scale(0.95); }
+        .iet-send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+        .iet-send-btn svg { width: 17px; height: 17px; fill: #0a0f0a; }
+        .iet-footer-note { text-align: center; font-size: 10.5px; color: #6b7f6b; margin-top: 7px; }
+        .iet-footer-note span { color: #00e5a0; }
+
+        /* ── MOBILE ── */
+        @media (max-width: 480px) {
+            .iet-chat-window {
+                width: calc(100vw - 20px) !important;
+                right: 10px !important; bottom: 90px !important;
+                height: min(500px, calc(100dvh - 110px)) !important;
+            }
+            .iet-fab { bottom: 20px; right: 20px; }
+        }
+    </style>
+
+    <!-- Chat Script -->
+    <script>
+        // 🔁 Replace with your production URL when deploying
+        const IET_WEBHOOK = 'http://localhost:5678/webhook/8d2f2e0c-6e3a-43ba-8e01-4f6c989a5e80/chat';
+
+        let ietOpen = false, ietMaximized = false, ietMinimized = false, ietWaiting = false;
+
+        function ietToggleChat() {
+            ietOpen = !ietOpen;
+            const win = document.getElementById('ietChatWindow');
+            const fab = document.getElementById('ietFab');
+            const badge = document.getElementById('ietBadge');
+            if (ietOpen) {
+                win.classList.remove('iet-hidden');
+                win.style.animation = 'none';
+                requestAnimationFrame(() => {
+                    win.style.animation = 'ietWindowIn 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards';
+                });
+                fab.classList.add('iet-open');
+                if (badge) badge.remove();
+                ietMinimized = false;
+                win.classList.remove('iet-minimized');
+                setTimeout(() => document.getElementById('ietChatInput').focus(), 400);
+            } else {
+                win.classList.add('iet-hidden');
+                fab.classList.remove('iet-open');
+                ietMaximized = false; ietMinimized = false;
+                win.classList.remove('iet-maximized', 'iet-minimized');
+            }
+        }
+
+        function ietMinimize() {
+            ietMinimized = !ietMinimized;
+            const win = document.getElementById('ietChatWindow');
+            const btn = document.getElementById('ietMinBtn');
+            win.classList.toggle('iet-minimized', ietMinimized);
+            if (ietMinimized) win.classList.remove('iet-maximized');
+            btn.title = ietMinimized ? 'Restore' : 'Minimize';
+        }
+
+        function ietMaximize() {
+            ietMaximized = !ietMaximized;
+            ietMinimized = false;
+            const win = document.getElementById('ietChatWindow');
+            const btn = document.getElementById('ietMaxBtn');
+            win.classList.remove('iet-minimized');
+            win.classList.toggle('iet-maximized', ietMaximized);
+            btn.title = ietMaximized ? 'Restore' : 'Maximize';
+        }
+
+        function ietTime() {
+            return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function ietAppendMsg(role, text) {
+            const body = document.getElementById('ietChatBody');
+            const row = document.createElement('div');
+            row.className = `iet-msg-row iet-${role}`;
+            const av = document.createElement('div');
+            av.className = 'iet-msg-avatar';
+            av.textContent = role === 'bot' ? 'AI' : 'U';
+            const wrap = document.createElement('div');
+            const bubble = document.createElement('div');
+            bubble.className = 'iet-bubble';
+            bubble.innerHTML = text.replace(/\n/g, '<br>');
+            const time = document.createElement('span');
+            time.className = 'iet-bubble-time';
+            time.textContent = ietTime();
+            wrap.appendChild(bubble);
+            wrap.appendChild(time);
+            row.appendChild(av);
+            row.appendChild(wrap);
+            body.appendChild(row);
+            body.scrollTop = body.scrollHeight;
+        }
+
+        function ietShowTyping() {
+            const body = document.getElementById('ietChatBody');
+            const row = document.createElement('div');
+            row.className = 'iet-typing-row'; row.id = 'ietTypingRow';
+            row.innerHTML = `<div class="iet-msg-avatar">AI</div>
+                <div class="iet-typing-bubble">
+                    <div class="iet-dot"></div>
+                    <div class="iet-dot"></div>
+                    <div class="iet-dot"></div>
+                </div>`;
+            body.appendChild(row);
+            body.scrollTop = body.scrollHeight;
+        }
+
+        function ietRemoveTyping() {
+            const t = document.getElementById('ietTypingRow');
+            if (t) t.remove();
+        }
+
+        async function ietSendMessage() {
+            if (ietWaiting) return;
+            const input = document.getElementById('ietChatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            // Hide chips
+            const chips = document.getElementById('ietChipRow');
+            if (chips) chips.style.display = 'none';
+
+            ietAppendMsg('user', text);
+            input.value = ''; input.style.height = 'auto';
+            ietWaiting = true;
+            document.getElementById('ietSendBtn').disabled = true;
+            ietShowTyping();
+
+            try {
+                const res = await fetch(IET_WEBHOOK, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors',
+                    body: JSON.stringify({ chatInput: text, sessionId: 'iet-session-' + (localStorage.getItem('ietSessionId') || (localStorage.setItem('ietSessionId', Date.now()), Date.now())) })
+                });
+                ietRemoveTyping();
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                const reply = data?.output ?? data?.message ?? data?.reply ?? data?.text ?? data?.response ?? (typeof data === 'string' ? data : null);
+                ietAppendMsg('bot', reply || "Got a response but couldn't read it. Check n8n output node.");
+            } catch (err) {
+                ietRemoveTyping();
+                console.error('IET Chat error:', err);
+                if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError') || err.message.includes('Load failed') || err.message.includes('ERR_CONNECTION')) {
+                    ietAppendMsg('bot', "⚠️ Can't reach the AI server.\n\nMake sure n8n is running and the webhook is active.");
+                } else {
+                    ietAppendMsg('bot', `Error: ${err.message}`);
+                }
+            } finally {
+                ietWaiting = false;
+                document.getElementById('ietSendBtn').disabled = false;
+                document.getElementById('ietChatInput').focus();
+            }
+        }
+
+        function ietSendChip(el) {
+            document.getElementById('ietChatInput').value = el.textContent.replace(/^\S+\s/, '').trim();
+            ietSendMessage();
+        }
+
+        function ietHandleKey(e) {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ietSendMessage(); }
+        }
+
+        function ietAutoResize(el) {
+            el.style.height = 'auto';
+            el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+        }
+    </script>
+
+    <!-- ====================================================== -->
 
     <script src="/jsfiles/script.js"></script>
     <script>
         function openLoginModal() {
             alert('Login functionality coming soon!');
         }
-
         function openUploadModal() {
             window.open('/htmlfiles/upload.html', '_blank');
         }
-
         function scrollToBranches() {
-            document.getElementById('branches').scrollIntoView({
-                behavior: 'smooth'
-            });
+            document.getElementById('branches').scrollIntoView({ behavior: 'smooth' });
         }
-
         function navigateToSemester(branch) {
             const branchSlug = branch.toUpperCase().replace(/\./g, '').replace(/\s+/g, '');
             window.location.href = `/${encodeURIComponent(branchSlug)}/sem`;

@@ -17,6 +17,13 @@ hamburger?.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger?.classList.remove('active');
+        navMenu?.classList.remove('active');
+    });
+});
+
 // ========== FILE INPUT HANDLING ==========
 const fileInput = document.getElementById('file');
 const fileName = document.getElementById('fileName');
@@ -47,6 +54,11 @@ const semesterSelect = document.getElementById('semester');
 const subjectSelect = document.getElementById('subject');
 const facultyInput = document.getElementById('faculty');
 
+const API_BASE_URL =
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000'
+        : window.location.origin;
+
 // Function to populate subjects based on branch and semester
 async function populateSubjects() {
     const branch = branchSelect.value;
@@ -59,7 +71,7 @@ async function populateSubjects() {
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/api/subjects?branch=${encodeURIComponent(branch)}&semester=${encodeURIComponent(semester)}`);
+        const response = await fetch(`${API_BASE_URL}/api/subjects?branch=${encodeURIComponent(branch)}&semester=${encodeURIComponent(semester)}`);
         const result = await response.json();
 
         if (response.ok && result.success) {
