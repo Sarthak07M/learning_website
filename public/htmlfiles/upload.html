@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <title>IET Resources | Upload Study Materials</title>
     <link rel="stylesheet" href="/cssfiles/upload.css">
+    <link rel="stylesheet" href="/cssfiles/theme-toggle.css">
 </head>
 <body>
     <!-- Animated Background -->
@@ -29,13 +30,20 @@
                 <span class="logo-text">IET Resources</span>
                 <div class="logo-glow"></div>
             </div>
+            <div class="theme-toggle-wrapper">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light theme">
+                    <span class="theme-toggle-circle">
+                        <span class="theme-icon">☀️</span>
+                    </span>
+                </button>
+            </div>
             <ul class="nav-menu">
                 <li><a href="/htmlfiles/index.html" class="nav-link">Home</a></li>
                 <li><a href="/htmlfiles/about.html" class="nav-link">About Us</a></li>
                 <li><a href="/htmlfiles/contact.html" class="nav-link">Contact Us</a></li>
                 <li><a href="/htmlfiles/privacy.html" class="nav-link">Privacy Policy</a></li>
                 <li><a href="/htmlfiles/team.html" class="nav-link">Team</a></li>
-                <li><a href="/htmlfiles/branch.html" class="nav-link">Branches</a></li>
+                <li><a href="/htmlfiles/index.html#branches" class="nav-link">Branches</a></li>
                 <li><a href="/htmlfiles/faculty.html" class="nav-link">Subjects</a></li>
                 <li><a href="/htmlfiles/upload.html" class="nav-link active">Upload</a></li>
             </ul>
@@ -139,7 +147,7 @@
                 <a href="/htmlfiles/contact.html">Contact Us</a>
                 <a href="/htmlfiles/privacy.html">Privacy Policy</a>
                 <a href="/htmlfiles/team.html">Team</a>
-                <a href="/htmlfiles/branch.html">Branches</a>
+                <a href="/htmlfiles/index.html#branches">Branches</a>
                 <a href="/htmlfiles/faculty.html">Subjects</a>
                 <a href="/htmlfiles/upload.html">Contribute</a>
             </div>
@@ -150,5 +158,6 @@
     </footer>
 
     <script src="/jsfiles/upload.js"></script>
+    <script src="/jsfiles/theme.js"></script>
 </body>
 </html>

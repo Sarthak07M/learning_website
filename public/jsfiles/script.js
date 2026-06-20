@@ -274,7 +274,7 @@ document.addEventListener('mousemove', (e) => {
         position: fixed;
         width: 4px;
         height: 4px;
-        background: radial-gradient(circle, rgba(0, 255, 136, 0.6), transparent);
+        background: radial-gradient(circle, var(--cursor-trail, rgba(0, 255, 136, 0.75)), transparent);
         border-radius: 50%;
         pointer-events: none;
         left: ${e.clientX}px;

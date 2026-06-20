@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <title>About Us | IET Resources</title>
     <link rel="stylesheet" href="/cssfiles/style.css">
+    <link rel="stylesheet" href="/cssfiles/theme-toggle.css">
 </head>
 <body class="content-page">
     <div class="bg-animation" aria-hidden="true">
@@ -27,6 +28,13 @@
                 <span class="logo-text">IET Resources</span>
                 <div class="logo-glow"></div>
             </div>
+            <div class="theme-toggle-wrapper">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light theme">
+                    <span class="theme-toggle-circle">
+                        <span class="theme-icon">☀️</span>
+                    </span>
+                </button>
+            </div>
             <ul class="nav-menu">
                 <li><a href="/htmlfiles/index.html" class="nav-link">Home</a></li>
                 <li><a href="/htmlfiles/about.html" class="nav-link active">About Us</a></li>
@@ -35,7 +43,7 @@
                 <li><a href="/htmlfiles/team.html" class="nav-link">Team</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="btn-signin" onclick="window.location.href='/htmlfiles/branch.html'">Browse Branches</button>
+                <button class="btn-signin" onclick="window.location.href='/htmlfiles/index.html#branches'">Browse Branches</button>
                 <button class="btn-contribute" onclick="window.location.href='/htmlfiles/upload.html'">Contribute →</button>
             </div>
             <div class="hamburger"><span></span><span></span><span></span></div>
@@ -98,5 +106,6 @@
     </footer>
 
     <script src="/jsfiles/script.js"></script>
+    <script src="/jsfiles/theme.js"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <title>IET Resources | Study Material and Placement Support</title>
     <link rel="stylesheet" href="/cssfiles/style.css">
+    <link rel="stylesheet" href="/cssfiles/theme-toggle.css">
 </head>
 <body>
     <!-- Animated Background -->
@@ -29,6 +30,13 @@
                 <span class="logo-text">IET Resources</span>
                 <div class="logo-glow"></div>
             </div>
+            <div class="theme-toggle-wrapper">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light theme">
+                    <span class="theme-toggle-circle">
+                        <span class="theme-icon">☀️</span>
+                    </span>
+                </button>
+            </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="/htmlfiles/about.html" class="nav-link">About Us</a></li>
@@ -38,7 +46,7 @@
                 <li><a href="#branches" class="nav-link">Branches</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="btn-signin" onclick="openLoginModal()">Sign in</button>
+                <button class="btn-signin" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSesVs4PmdGuKV-JN_GhmwqlS4eH459o7ThqYO7ogaVPZysEyA/viewform?usp=publish-editor', '_blank')">Feedback</button>
                 <button class="btn-contribute" onclick="openUploadModal()">Contribute →</button>
             </div>
             <div class="hamburger">
@@ -187,8 +195,8 @@
                 <a href="/htmlfiles/contact.html">Contact Us</a>
                 <a href="/htmlfiles/privacy.html">Privacy Policy</a>
                 <a href="/htmlfiles/team.html">Team</a>
-                <a href="/htmlfiles/branch.html">Branches</a>
-                <a href="/htmlfiles/branch.html">Subjects</a>
+                <a href="/htmlfiles/index.html#branches">Branches</a>
+                <a href="/htmlfiles/index.html#branches">Subjects</a>
                 <a href="/htmlfiles/upload.html">Contribute</a>
             </div>
             <div class="footer-social">
@@ -630,6 +638,7 @@
     <!-- ====================================================== -->
 
     <script src="/jsfiles/script.js"></script>
+    <script src="/jsfiles/theme.js"></script>
     <script>
         function openLoginModal() {
             alert('Login functionality coming soon!');

@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <title>Contact Us | IET Resources</title>
     <link rel="stylesheet" href="/cssfiles/style.css">
+    <link rel="stylesheet" href="/cssfiles/theme-toggle.css">
 </head>
 <body class="content-page">
     <div class="bg-animation" aria-hidden="true">
@@ -26,6 +27,13 @@
             <div class="logo">
                 <span class="logo-text">IET Resources</span>
                 <div class="logo-glow"></div>
+            </div>
+            <div class="theme-toggle-wrapper">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light theme">
+                    <span class="theme-toggle-circle">
+                        <span class="theme-icon">☀️</span>
+                    </span>
+                </button>
             </div>
             <ul class="nav-menu">
                 <li><a href="/htmlfiles/index.html" class="nav-link">Home</a></li>
@@ -67,7 +75,7 @@
                     <article class="contact-card">
                         <h3>Explore</h3>
                         <p>Browse branches and subjects to see how the resource structure is organized.</p>
-                        <div class="contact-meta"><a href="/htmlfiles/branch.html">Browse branches</a></div>
+                        <div class="contact-meta"><a href="/htmlfiles/index.html#branches">Browse branches</a></div>
                     </article>
                 </div>
             </section>
@@ -101,5 +109,6 @@
     </footer>
 
     <script src="/jsfiles/script.js"></script>
+    <script src="/jsfiles/theme.js"></script>
 </body>
 </html>

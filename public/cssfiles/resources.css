@@ -17,6 +17,32 @@
     --glow-cyan: rgba(0, 212, 255, 0.3);
 }
 
+/* Light Theme Variables */
+html[data-theme="light"] {
+    --primary-green: #10a347;
+    --primary-cyan: #0088cc;
+    --primary-purple: #7c3aed;
+    --dark-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --glow-green: rgba(16, 163, 71, 0.15);
+    --glow-cyan: rgba(0, 136, 204, 0.15);
+}
+
+/* Dark Theme Variables */
+html[data-theme="dark"] {
+    --primary-green: #00ff88;
+    --primary-cyan: #00d4ff;
+    --primary-purple: #b366ff;
+    --dark-bg: #0a0a0a;
+    --card-bg: #151515;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --glow-green: rgba(0, 255, 136, 0.3);
+    --glow-cyan: rgba(0, 212, 255, 0.3);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -591,5 +617,40 @@ body {
     .resource-icon svg {
         width: 30px;
         height: 30px;
+    }
+}
+
+/* ===== LIGHT THEME OVERRIDES ===== */
+html[data-theme="light"] body {
+    background: linear-gradient(145deg, #ecfdf5 0%, #eff6ff 50%, #faf5ff 100%) fixed;
+}
+html[data-theme="light"] .resource-card {
+    background: linear-gradient(145deg, #ffffff, rgba(240,253,248,0.65));
+    border: 1.5px solid rgba(5, 150, 105, 0.15);
+    box-shadow: 0 4px 24px rgba(5, 150, 105, 0.10), 0 1px 4px rgba(0,0,0,0.05);
+    color: var(--text-primary);
+}
+html[data-theme="light"] .resource-card:hover {
+    border-color: var(--primary-green);
+    box-shadow: 0 20px 60px rgba(5, 150, 105, 0.22), 0 4px 16px rgba(2, 132, 199, 0.14);
+}
+html[data-theme="light"] .resource-icon {
+    background: linear-gradient(135deg, rgba(5,150,105,0.15), rgba(2,132,199,0.12));
+    box-shadow: 0 0 16px rgba(5,150,105,0.18);
+}
+html[data-theme="light"] .resource-btn {
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-cyan));
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(5,150,105,0.30);
+}
+html[data-theme="light"] .footer {
+    background: rgba(255,255,255,0.90);
+    border-top: 1px solid rgba(5, 150, 105, 0.18);
+}
+@media (max-width: 768px) {
+    html[data-theme="light"] .nav-menu {
+        background: rgba(255,255,255,0.98);
+        border: 1px solid rgba(5,150,105,0.20);
+        box-shadow: 0 10px 40px rgba(5,150,105,0.12);
     }
 }

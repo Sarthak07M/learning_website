@@ -17,6 +17,32 @@
     --glow-cyan: rgba(0, 212, 255, 0.3);
 }
 
+/* Light Theme Variables */
+html[data-theme="light"] {
+    --primary-green: #10a347;
+    --primary-cyan: #0088cc;
+    --primary-purple: #7c3aed;
+    --dark-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --glow-green: rgba(16, 163, 71, 0.15);
+    --glow-cyan: rgba(0, 136, 204, 0.15);
+}
+
+/* Dark Theme Variables */
+html[data-theme="dark"] {
+    --primary-green: #00ff88;
+    --primary-cyan: #00d4ff;
+    --primary-purple: #b366ff;
+    --dark-bg: #0a0a0a;
+    --card-bg: #151515;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --glow-green: rgba(0, 255, 136, 0.3);
+    --glow-cyan: rgba(0, 212, 255, 0.3);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -591,5 +617,41 @@ body {
     
     .upload-container {
         padding: 1.5rem;
+    }
+}
+
+/* ===== LIGHT THEME OVERRIDES ===== */
+html[data-theme="light"] body {
+    background: linear-gradient(145deg, #ecfdf5 0%, #eff6ff 50%, #faf5ff 100%) fixed;
+}
+html[data-theme="light"] .upload-container,
+html[data-theme="light"] .upload-section,
+html[data-theme="light"] .upload-box {
+    background: rgba(255,255,255,0.96);
+    border-color: rgba(5, 150, 105, 0.25);
+    box-shadow: 0 4px 24px rgba(5, 150, 105, 0.10);
+    color: var(--text-primary);
+}
+html[data-theme="light"] .upload-section:hover,
+html[data-theme="light"] .upload-box:hover,
+html[data-theme="light"] .upload-section.drag-over,
+html[data-theme="light"] .upload-box.drag-over {
+    border-color: var(--primary-green);
+    box-shadow: 0 12px 40px rgba(5, 150, 105, 0.20);
+}
+html[data-theme="light"] .upload-btn {
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-cyan));
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(5,150,105,0.35);
+}
+html[data-theme="light"] .footer {
+    background: rgba(255,255,255,0.90);
+    border-top: 1px solid rgba(5,150,105,0.18);
+}
+@media (max-width: 768px) {
+    html[data-theme="light"] .nav-menu {
+        background: rgba(255,255,255,0.98);
+        border: 1px solid rgba(5,150,105,0.20);
+        box-shadow: 0 10px 40px rgba(5,150,105,0.12);
     }
 }
