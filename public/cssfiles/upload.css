@@ -28,6 +28,8 @@ html[data-theme="light"] {
     --text-secondary: #666666;
     --glow-green: rgba(16, 163, 71, 0.15);
     --glow-cyan: rgba(0, 136, 204, 0.15);
+    --boarder-input: 1px solid rgba(31, 30, 30, 0.329);
+    --background-input: rgba(243, 241, 241, 0.388);
 }
 
 /* Dark Theme Variables */
@@ -41,6 +43,8 @@ html[data-theme="dark"] {
     --text-secondary: #a0a0a0;
     --glow-green: rgba(0, 255, 136, 0.3);
     --glow-cyan: rgba(0, 212, 255, 0.3);
+    --boarder-input: 1px solid rgba(255, 255, 255, 0.1);
+    --background-input: rgba(255, 255, 255, 0.05);
 }
 
 html {
@@ -148,13 +152,31 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
+html[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(5, 150, 105, 0.15);
+}
+
+html[data-theme="light"] .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 40px rgba(5, 150, 105, 0.12);
+}
+
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 1.2rem 2rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 2rem;
+}
+
+.nav-container .theme-toggle-wrapper {
+    margin-left: 0;
+}
+
+.nav-container .nav-menu {
+    margin-left: auto;
 }
 
 .logo {
@@ -358,8 +380,8 @@ body {
 .form-group input,
 .form-group select {
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--background-input);
+    border: var(--boarder-input);
     border-radius: 10px;
     color: var(--text-primary);
     font-size: 1rem;
@@ -540,6 +562,7 @@ body {
     .nav-container {
         padding: 1rem;
         position: relative;
+        flex-wrap: wrap;
     }
 
     .nav-menu {
@@ -556,6 +579,7 @@ body {
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         z-index: 1001;
+        margin-left: 0;
     }
 
     .nav-menu.active {
@@ -624,6 +648,17 @@ body {
 html[data-theme="light"] body {
     background: linear-gradient(145deg, #ecfdf5 0%, #eff6ff 50%, #faf5ff 100%) fixed;
 }
+
+html[data-theme="light"] .particle {
+    background: var(--primary-green);
+    opacity: 0.8;
+    box-shadow: 0 0 8px rgba(16, 163, 71, 0.4);
+}
+
+html[data-theme="light"] .bg-animation {
+    background: transparent;
+}
+
 html[data-theme="light"] .upload-container,
 html[data-theme="light"] .upload-section,
 html[data-theme="light"] .upload-box {

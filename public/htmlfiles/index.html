@@ -10,6 +10,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a0a0a">
     <title>IET Resources | Study Material and Placement Support</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
     <link rel="stylesheet" href="/cssfiles/style.css">
     <link rel="stylesheet" href="/cssfiles/theme-toggle.css">
 </head>
@@ -48,7 +49,7 @@
             </ul>
             <div class="nav-actions">
                 <button class="btn-signin" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSesVs4PmdGuKV-JN_GhmwqlS4eH459o7ThqYO7ogaVPZysEyA/viewform?usp=publish-editor', '_blank')">Feedback</button>
-                <button class="btn-contribute" onclick="openUploadModal()">Contribute →</button>
+                <button class="btn-contribute" onclick="window.location.href='/htmlfiles/upload.html'">Contribute →</button>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -770,9 +771,6 @@
     <script src="/jsfiles/script.js"></script>
     <script src="/jsfiles/theme.js"></script>
     <script>
-        function openLoginModal() {
-            alert('Login functionality coming soon!');
-        }
         function openUploadModal() {
             window.open('/htmlfiles/upload.html', '_blank');
         }
