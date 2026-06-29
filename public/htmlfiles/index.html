@@ -615,8 +615,7 @@
 
     <!-- Chat Script -->
     <script>
-        // 🔁 Replace with your production URL when deploying
-        const IET_WEBHOOK = 'https://palace-demote-vacancy.ngrok-free.dev/webhook/85a0e904-b2ee-4ac5-b504-626daf765074/chat';
+        const IET_AI_API = '/api/chat';
 
         let ietOpen = false, ietMaximized = false, ietMinimized = false, ietWaiting = false;
 
@@ -749,22 +748,25 @@
             ietShowTyping();
 
             try {
-                const res = await fetch(IET_WEBHOOK, {
+                const res = await fetch(IET_AI_API, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    mode: 'cors',
-                    body: JSON.stringify({ chatInput: text, sessionId: 'iet-session-' + (localStorage.getItem('ietSessionId') || (localStorage.setItem('ietSessionId', Date.now()), Date.now())) })
+                    body: JSON.stringify({
+                        message: text,
+                        chatInput: text,
+                        sessionId: 'iet-session-' + (localStorage.getItem('ietSessionId') || (localStorage.setItem('ietSessionId', Date.now()), Date.now()))
+                    })
                 });
                 ietRemoveTyping();
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const data = await res.json();
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(data?.message || `HTTP ${res.status}`);
                 const reply = data?.output ?? data?.message ?? data?.reply ?? data?.text ?? data?.response ?? (typeof data === 'string' ? data : null);
-                ietAppendMsg('bot', reply || "Got a response but couldn't read it. Check n8n output node.", { typewriter: true });
+                ietAppendMsg('bot', reply || "Got a response but couldn't read it.", { typewriter: true });
             } catch (err) {
                 ietRemoveTyping();
                 console.error('IET Chat error:', err);
                 if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError') || err.message.includes('Load failed') || err.message.includes('ERR_CONNECTION')) {
-                    ietAppendMsg('bot', "⚠️ Can't reach the AI server.\n\nMake sure n8n is running and the webhook is active.");
+                    ietAppendMsg('bot', "⚠️ Can't reach the AI server.\n\nMake sure the backend is running and your OpenRouter API key is configured in .env.");
                 } else {
                     ietAppendMsg('bot', `Error: ${err.message}`);
                 }

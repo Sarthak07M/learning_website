@@ -133,6 +133,81 @@ const startServer = () => {
 
     // Routes
 
+    // POST /api/chat - Proxy chat requests to OpenRouter using the server-side API key
+    app.post('/api/chat', async (req, res) => {
+      try {
+        const { message, chatInput, prompt } = req.body;
+        const userMessage = (message || chatInput || prompt || '').toString().trim();
+
+        if (!userMessage) {
+          return res.status(400).json({
+            success: false,
+            message: 'Message is required'
+          });
+        }
+
+        const apiKey = process.env.OPENROUTER_API_KEY;
+        if (!apiKey || apiKey.includes('your_')) {
+          return res.status(500).json({
+            success: false,
+            message: 'OpenRouter API key is not configured. Add OPENROUTER_API_KEY to your .env file.'
+          });
+        }
+
+        const model = process.env.OPENROUTER_MODEL || 'gpt-4o-mini';
+        const openRouterUrl = 'https://openrouter.ai/api/v1/chat/completions';
+
+        const response = await fetch(openRouterUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model,
+            messages: [
+              { role: 'user', content: userMessage }
+            ],
+            temperature: 0.7,
+            top_p: 0.9,
+            max_tokens: 800
+          })
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          console.error('OpenRouter API error:', data);
+          return res.status(response.status).json({
+            success: false,
+            message: data?.error?.message || 'OpenRouter request failed'
+          });
+        }
+
+        const reply = data?.choices?.[0]?.message?.content || '';
+        if (!reply) {
+          return res.status(502).json({
+            success: false,
+            message: 'OpenRouter returned an empty response'
+          });
+        }
+
+        res.json({
+          success: true,
+          output: reply,
+          reply,
+          message: reply,
+          model
+        });
+      } catch (error) {
+        console.error('Error calling OpenRouter API:', error);
+        res.status(500).json({
+          success: false,
+          message: error.message || 'Failed to generate response'
+        });
+      }
+    });
+
     // GET /api/subjects - Get subjects for branch and semester
     app.get('/api/subjects', (req, res) => {
       try {
