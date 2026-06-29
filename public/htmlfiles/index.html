@@ -667,7 +667,7 @@
             return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
 
-        function ietAppendMsg(role, text) {
+        function ietAppendMsg(role, text, options = {}) {
             const body = document.getElementById('ietChatBody');
             const row = document.createElement('div');
             row.className = `iet-msg-row iet-${role}`;
@@ -677,7 +677,6 @@
             const wrap = document.createElement('div');
             const bubble = document.createElement('div');
             bubble.className = 'iet-bubble';
-            bubble.innerHTML = text.replace(/\n/g, '<br>');
             const time = document.createElement('span');
             time.className = 'iet-bubble-time';
             time.textContent = ietTime();
@@ -687,6 +686,31 @@
             row.appendChild(wrap);
             body.appendChild(row);
             body.scrollTop = body.scrollHeight;
+
+            if (options.typewriter) {
+                const typingSpeed = options.speed || 20;
+                const fullText = String(text ?? '');
+                let index = 0;
+                bubble.innerHTML = '';
+
+                const interval = setInterval(() => {
+                    if (index >= fullText.length) {
+                        clearInterval(interval);
+                        bubble.innerHTML = fullText.replace(/\n/g, '<br>');
+                        body.scrollTop = body.scrollHeight;
+                        return;
+                    }
+
+                    const char = fullText[index];
+                    bubble.innerHTML = fullText.slice(0, index + 1).replace(/\n/g, '<br>');
+                    index += 1;
+                    body.scrollTop = body.scrollHeight;
+                }, typingSpeed);
+
+                return;
+            }
+
+            bubble.innerHTML = String(text ?? '').replace(/\n/g, '<br>');
         }
 
         function ietShowTyping() {
@@ -735,7 +759,7 @@
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
                 const reply = data?.output ?? data?.message ?? data?.reply ?? data?.text ?? data?.response ?? (typeof data === 'string' ? data : null);
-                ietAppendMsg('bot', reply || "Got a response but couldn't read it. Check n8n output node.");
+                ietAppendMsg('bot', reply || "Got a response but couldn't read it. Check n8n output node.", { typewriter: true });
             } catch (err) {
                 ietRemoveTyping();
                 console.error('IET Chat error:', err);
