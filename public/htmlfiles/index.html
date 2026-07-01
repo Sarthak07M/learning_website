@@ -45,6 +45,7 @@
                 <li><a href="/htmlfiles/contact.html" class="nav-link">Contact Us</a></li>
                 <li><a href="/htmlfiles/privacy.html" class="nav-link">Privacy Policy</a></li>
                 <li><a href="/htmlfiles/team.html" class="nav-link">Team</a></li>
+                <li><a href="/htmlfiles/sgpa-calculator.html" class="nav-link">SGPA Calculator</a></li>
                 <li><a href="#branches" class="nav-link">Branches</a></li>
             </ul>
             <div class="nav-actions">
@@ -362,6 +363,11 @@
             animation: ietFabPulse 2.5s ease-in-out infinite;
             transition: transform 0.2s ease;
             z-index: 99999;
+        }
+        .iet-fab.iet-fab-sgpa {
+            bottom: 100px;
+            background: linear-gradient(135deg, #ffb300, #ff6b00);
+            box-shadow: 0 8px 32px rgba(255,107,0,0.28);
         }
         .iet-fab:hover { transform: scale(1.08); }
         .iet-fab svg { width: 24px; height: 24px; fill: #0a0f0a; position: absolute; transition: opacity 0.25s, transform 0.25s; }
@@ -829,6 +835,10 @@
         function navigateToSemester(branch) {
             const branchSlug = branch.toUpperCase().replace(/\./g, '').replace(/\s+/g, '');
             window.location.href = `/${encodeURIComponent(branchSlug)}/sem`;
+        }
+
+        function openSgpaCalculator() {
+            window.location.href = '/htmlfiles/sgpa-calculator.html';
         }
 
         document.addEventListener('DOMContentLoaded', () => {

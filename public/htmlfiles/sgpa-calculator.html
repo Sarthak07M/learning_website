@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use the IET Resources SGPA calculator to estimate your semester grade point average quickly and accurately.">
+    <meta name="keywords" content="SGPA Calculator, semester GPA, engineering SGPA, IET Resources">
+    <title>SGPA Calculator | IET Resources</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="stylesheet" href="/cssfiles/style.css">
+    <link rel="stylesheet" href="/cssfiles/theme-toggle.css">
+</head>
+<body class="content-page">
+    <div class="bg-animation" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">IET Resources</span>
+                <div class="logo-glow"></div>
+            </div>
+            <div class="theme-toggle-wrapper">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light theme">
+                    <span class="theme-toggle-circle">
+                        <span class="theme-icon theme-icon-sun">🌙</span>
+                        <span class="theme-icon theme-icon-moon">☀️</span>
+                    </span>
+                </button>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/htmlfiles/index.html" class="nav-link">Home</a></li>
+                <li><a href="/htmlfiles/about.html" class="nav-link">About Us</a></li>
+                <li><a href="/htmlfiles/contact.html" class="nav-link">Contact Us</a></li>
+                <li><a href="/htmlfiles/privacy.html" class="nav-link">Privacy Policy</a></li>
+                <li><a href="/htmlfiles/team.html" class="nav-link">Team</a></li>
+                <li><a href="/htmlfiles/sgpa-calculator.html" class="nav-link active">SGPA Calculator</a></li>
+                <li><a href="/htmlfiles/index.html#branches" class="nav-link">Branches</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-signin" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSesVs4PmdGuKV-JN_GhmwqlS4eH459o7ThqYO7ogaVPZysEyA/viewform?usp=publish-editor', '_blank')">Feedback</button>
+                <button class="btn-contribute" onclick="window.location.href='/htmlfiles/upload.html'">Contribute →</button>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <span class="page-badge">SGPA Calculator</span>
+            <h1 class="page-title">Estimate your semester SGPA instantly.</h1>
+            <p class="page-subtitle">Add subject credits and grades, then calculate your SGPA with a clean interface that matches the rest of the site.</p>
+        </section>
+
+        <div class="content-shell">
+            <section class="page-section">
+                <div class="sgpa-panel">
+                    <table class="sgpa-table" id="subjectsTable">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Type</th>
+                                <th>Credits</th>
+                                <th>Grade</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Default Rows -->
+                        </tbody>
+                    </table>
+
+                    <div class="sgpac-controls">
+                        <div class="sgpac-actions">
+                            <button class="btn btn-primary" onclick="addRow('Theory')">+ Add Theory</button>
+                            <button class="btn btn-secondary" onclick="addRow('Practical')">+ Add Practical</button>
+                        </div>
+                        <button class="btn btn-primary" onclick="calculateSGPA()">Calculate SGPA</button>
+                    </div>
+
+                    <div class="result-box">
+                        <h3 id="sgpaResult">0.00</h3>
+                        <p id="creditSummary">Total Credits: 0</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo"><span>IET Resources</span></div>
+            <div class="footer-links">
+                <a href="/htmlfiles/about.html">About Us</a>
+                <a href="/htmlfiles/contact.html">Contact Us</a>
+                <a href="/htmlfiles/privacy.html">Privacy Policy</a>
+                <a href="/htmlfiles/team.html">Team</a>
+                <a href="/htmlfiles/upload.html">Contribute</a>
+            </div>
+            <div class="footer-social">
+                <p>&copy; 2026 IET Resources. Educational support for students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const gradePoints = {
+            'O': 10,
+            'A+': 9,
+            'A': 8,
+            'B+': 7,
+            'B': 6,
+            'C': 5,
+            'P': 4,
+            'F': 0
+        };
+
+        const gradeOptionsHTML = Object.keys(gradePoints).map(grade =>
+            `<option value="${grade}">${grade}</option>`
+        ).join('');
+
+        function addRow(type) {
+            const table = document.getElementById('subjectsTable').querySelector('tbody');
+            const newRow = document.createElement('tr');
+            const defaultCredit = type === 'Theory' ? 3 : 1;
+
+            newRow.innerHTML = `
+                <td><input type="text" placeholder="e.g. Subject 1"></td>
+                <td>${type}</td>
+                <td><input type="number" class="credit-input" min="1" max="6" value="${defaultCredit}"></td>
+                <td>
+                    <select class="grade-input">
+                        ${gradeOptionsHTML}
+                    </select>
+                </td>
+                <td><button class="btn btn-secondary" onclick="removeRow(this)">Remove</button></td>
+            `;
+
+            table.appendChild(newRow);
+        }
+
+        function removeRow(button) {
+            button.closest('tr')?.remove();
+        }
+
+        function calculateSGPA() {
+            const rows = document.querySelectorAll('#subjectsTable tbody tr');
+            let totalCredits = 0;
+            let totalGradePoints = 0;
+
+            rows.forEach((row) => {
+                const credits = parseFloat(row.querySelector('.credit-input').value) || 0;
+                const grade = row.querySelector('.grade-input').value;
+                const points = gradePoints[grade];
+
+                if (credits && points !== undefined) {
+                    totalCredits += credits;
+                    totalGradePoints += credits * points;
+                }
+            });
+
+            const sgpa = totalCredits > 0 ? (totalGradePoints / totalCredits).toFixed(2) : '0.00';
+
+            document.getElementById('sgpaResult').innerText = sgpa;
+            document.getElementById('creditSummary').innerText = `Total Credits: ${totalCredits}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            addRow('Theory');
+            addRow('Theory');
+            addRow('Theory');
+            addRow('Practical');
+            addRow('Practical');
+        });
+    </script>
+    <script src="/jsfiles/script.js"></script>
+    <script src="/jsfiles/theme.js"></script>
+</body>
+</html>
