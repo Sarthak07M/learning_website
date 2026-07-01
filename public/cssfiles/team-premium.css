@@ -312,6 +312,16 @@
     .team-grid-premium {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .team-card-premium {
+        padding-top: 4rem;
+    }
+
+    .team-avatar {
+        top: -44px;
+        width: 96px;
+        height: 96px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -325,12 +335,41 @@
 
     .team-grid-premium {
         grid-template-columns: 1fr;
-        gap: 1.4rem;
+        gap: 3.5rem;
+        row-gap: 3.5rem;
     }
 
     .team-card-premium {
-        max-width: 420px;
+        width: 100%;
+        max-width: 100%;
         margin: 0 auto;
+        padding-top: 3.6rem;
+    }
+
+    .team-avatar {
+        top: -36px;
+        width: 86px;
+        height: 86px;
+    }
+
+    .team-content-premium {
+        padding-top: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-grid-premium {
+        gap: 2.8rem;
+    }
+
+    .team-card-premium {
+        padding-top: 3rem;
+    }
+
+    .team-avatar {
+        top: -32px;
+        width: 78px;
+        height: 78px;
     }
 }
 

@@ -1710,6 +1710,53 @@ html[data-theme="light"] .ring-2 {
     gap: 0.65rem;
 }
 
+.sgpa-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 18px;
+}
+
+.sgpa-table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.sgpa-table-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+}
+
+@media (max-width: 768px) {
+    .sgpa-panel {
+        padding: 1.2rem;
+    }
+
+    .sgpa-table th,
+    .sgpa-table td {
+        padding: 0.85rem 0.9rem;
+    }
+
+    .sgpac-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sgpac-actions,
+    .sgpac-actions .btn-primary,
+    .sgpac-actions .btn-secondary,
+    .sgpac-controls > .btn-primary {
+        width: 100%;
+    }
+
+    .sgpac-actions {
+        justify-content: stretch;
+    }
+
+    .result-box {
+        min-height: auto;
+        padding: 1.4rem 1rem;
+    }
+}
+
 .result-box h3 {
     font-size: clamp(2.5rem, 4vw, 3.3rem);
     margin: 0;
